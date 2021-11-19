@@ -1,4 +1,6 @@
   // higer order function:
+  // 1. map()    2. filter()     3. sort()   4. reduce()
+  // 5.call()    6. bind()       7. apply()
 
 // higher order function are those function that will take a function as parameter means a callback function.
 // higher order function are the function that accept function as parameter and returns a function.
@@ -296,17 +298,17 @@ console.log(ageshort) */
 console.log(ageshort) */
 
 //reduce
-const reducedate = companies.reduce(function(total,company){
+/* const reducedate = companies.reduce(function(total,company){
     return total + (company.end -company.start)
 },0)
 
 console.log(reducedate)
-
+ */
 
 //combined higher order function togather
 
 //task : lets multiply all ages by 2 and then filter above 40 and the sort assending order and then reduce.
-
+/* 
 console.log(ages)
 
 const combined = ages
@@ -315,5 +317,50 @@ const combined = ages
 .sort((a1,a2)=>a1>a2?1:-1)
 .reduce((a,b)=> a+b,0)
 
-console.log(combined)
+console.log(combined) */
+
+///call function
+    // student constructor 
+/*
+function Student(firstname, lastname, subject){
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.subject = subject;
+    this.callfun = function()    {
+        console.log(`${this.firstname} ${this.lastname}`);
+    }
+}
+
+ const stud1 = new Student('john', 'doe');
+stud1.callfun(); */
+//call method takes the argument as string 
+//apply method takes arguments as array
+
+function Student(firstname, lastname, subject){
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.subject = subject;
+    
+}
+
+const callfun = function(prefix, suffix){
+    console.log(`${prefix} ${this.firstname} ${this.lastname} ${suffix}`);
+}
+ const stud1 = new Student('john', 'doe');
+//callfun.call(stud1, 'mr', 'hello');
+
+
+//callfun.apply(stud1,['mr', 'hello']);
+
+//bind function return a function 
+
+var fn = callfun.bind(stud1)
+console.log(fn)
+fn("a","b")
+
+
+
+
+
+
 
