@@ -2,18 +2,20 @@
   // 1. map()    2. filter()     3. sort()   4. reduce()
   // 5.call()    6. bind()       7. apply() find findindex
 
+
+
 // higher order function are those function that will take a function as parameter means a callback function.
 // higher order function are the function that accept function as parameter and returns a function.
 
 /* var a = function sum(b){
     console.log("hello"+b)
 }
-a(3);
+a(3); */
 
- *//* function sing(callback){
-    console.log("la alala ");
-    callback()
-} */
+//   function sing(callback){
+//     console.log("la alala ");
+//     callback()
+// }
 
  /* function sing(callback){
     console.log("hello function");
@@ -357,6 +359,29 @@ const callfun = function(prefix, suffix){
 var fn = callfun.bind(stud1)
 console.log(fn)
 fn("a","b")
+ */
+
+
+/* function  Studen(name, age){
+    this.name = name;
+    this.age = age;
+    
+}
+
+const fun= function(pref,suf){
+    return `${pref} ${this.name} ${this.age} ${suf}`
+}
+
+var stud = new Studen('johnnn','don')
+console.log(fun.call(stud,'mr',"hel")) */
+//console.log(fun())
+
+//promise, error handling(try catch), sync await, fetch, ajax, higher order function, nodejs architecture
+
+        //promise
+// if promise has two stage 1. resolve 2. reject
+// 1. when promise is resolve then() method is called
+//2. when promise is resolve catch() method is called..
 
  */
 
@@ -479,6 +504,59 @@ console.log(obj1) */
 //var disp = document.getElementsByTagName('p')
 //var disp = document.getElementById('display')
 
+//
+/* var disp = document.getElementById('display').innerHTML;
+console.log(disp);
+ */
+/* function f1(){
+var num1 = parseInt(document.getElementById("num1").value);
+var num2 = parseInt(document.getElementById('num2').value);
+var num3=num1+num2;
+console.log("hello"+num3) 
+} */
+//if we do this we get all element and its text which is inside the tag
+//we have a tag <p> and we want to access the value of this then use innerHTML
+//
+/* 
+var obj ={
+    fname : 'nitish',
+    lname: "chauhan"
+}
+
+console.log(obj.fname +" "+obj.lname);
+
+var obj = {
+    fname:'sams',
+    lname:'colvin'
+}
+
+console.log(obj.fname+" "+obj.lname) */
+
+
+//constructor
+//if we have hundrend preson then we to make hundred objects
+
+// so the solution is constructor..
+
+/* 
+function Person(fn,ln){
+    this.fn = fn,
+    this.ln = ln,
+    this.fullname = function(){
+        return this.fn +" "+this.ln
+    }
+}
+
+
+
+obj1 = new Person("nitish","chauhan")
+console.log(obj1.fullname())
+
+obj2 = new Person("mohit", "chauhan")
+console.log(obj2.fn+" " +obj2.ln)
+
+ */
+//prototype : we we make a function constuctor and we want to update the object the use prototype.
 
 //query selector
 
