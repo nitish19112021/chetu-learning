@@ -2,13 +2,15 @@
   // 1. map()    2. filter()     3. sort()   4. reduce()
   // 5.call()    6. bind()       7. apply()
 
+
+
 // higher order function are those function that will take a function as parameter means a callback function.
 // higher order function are the function that accept function as parameter and returns a function.
 
-var a = function sum(b){
+/* var a = function sum(b){
     console.log("hello"+b)
 }
-a(3);
+a(3); */
 
 /* function sing(callback){
     console.log("la alala ");
@@ -336,7 +338,7 @@ stud1.callfun(); */
 //call method takes the argument as string 
 //apply method takes arguments as array
 
-function Student(firstname, lastname, subject){
+/* function Student(firstname, lastname, subject){
     this.firstname = firstname;
     this.lastname = lastname;
     this.subject = subject;
@@ -346,7 +348,7 @@ function Student(firstname, lastname, subject){
 const callfun = function(prefix, suffix){
     console.log(`${prefix} ${this.firstname} ${this.lastname} ${suffix}`);
 }
- const stud1 = new Student('john', 'doe');
+ const stud1 = new Student('john', 'doe'); */
 //callfun.call(stud1, 'mr', 'hello');
 
 
@@ -354,13 +356,200 @@ const callfun = function(prefix, suffix){
 
 //bind function return a function 
 
-var fn = callfun.bind(stud1)
+/* var fn = callfun.bind(stud1)
 console.log(fn)
 fn("a","b")
+ */
+
+
+/* function  Studen(name, age){
+    this.name = name;
+    this.age = age;
+    
+}
+
+const fun= function(pref,suf){
+    return `${pref} ${this.name} ${this.age} ${suf}`
+}
+
+var stud = new Studen('johnnn','don')
+console.log(fun.call(stud,'mr',"hel")) */
+//console.log(fun())
+
+//promise, error handling(try catch), sync await, fetch, ajax, higher order function, nodejs architecture
+
+        //promise
+// if promise has two stage 1. resolve 2. reject
+// 1. when promise is resolve then() method is called
+//2. when promise is resolve catch() method is called..
+
+
+//
+/* var disp = document.getElementById('display').innerHTML;
+console.log(disp);
+ */
+/* function f1(){
+var num1 = parseInt(document.getElementById("num1").value);
+var num2 = parseInt(document.getElementById('num2').value);
+var num3=num1+num2;
+console.log("hello"+num3) 
+} */
+//if we do this we get all element and its text which is inside the tag
+//we have a tag <p> and we want to access the value of this then use innerHTML
+//
+/* 
+var obj ={
+    fname : 'nitish',
+    lname: "chauhan"
+}
+
+console.log(obj.fname +" "+obj.lname);
+
+var obj = {
+    fname:'sams',
+    lname:'colvin'
+}
+
+console.log(obj.fname+" "+obj.lname) */
+
+
+//constructor
+//if we have hundrend preson then we to make hundred objects
+
+// so the solution is constructor..
+
+/* 
+function Person(fn,ln){
+    this.fn = fn,
+    this.ln = ln,
+    this.fullname = function(){
+        return this.fn +" "+this.ln
+    }
+}
 
 
 
+obj1 = new Person("nitish","chauhan")
+console.log(obj1.fullname())
+
+obj2 = new Person("mohit", "chauhan")
+console.log(obj2.fn+" " +obj2.ln)
+
+ */
+//prototype : we we make a function constuctor and we want to update the object the use prototype.
+
+// suppose we are working on real projects and 
 
 
+/* function Person(fn,ln){
+    this.fname = fn;
+    this.lname = ln,
+    this.fullname = function(){
+        return this.fname +" "+this.lname;
+    }
+}
+Person.prototype.age = 12;
+var obj = new Person("nitish","chauhan")
+var obj1 =new Person('mohit' ,"chauhan")
+console.log(obj.age)
+console.log(obj1) */
 
 
+//var disp = document.getElementById('display').innerHTML;
+//console.log(document)
+// console.log(document.all)
+//console.log(document.head)
+
+//console.log(disp.siblingchild)
+//var disp = document.getElementsByTagName('p')
+//var disp = document.getElementById('display')
+
+
+//query selector
+
+//var disp = document.querySelector('#display')
+// var disp = document.querySelector('.disp')
+// console.log(disp.children[0])
+
+//create and append element
+
+/* var myul = document.getElementById("disp");
+//console.log(myul)
+var newli = document.createElement('li')
+//console.log(newli)
+let litext = document.createTextNode('bhavesh');
+//console.log(litext)
+newli.appendChild(litext)
+//myul.appendChild(newli) */
+
+/* let myli = document.getElementById('disp');
+let newli = document.createElement('li');
+//console.log(newli);
+let textnode = document.createTextNode('inssi');
+newli.appendChild(textnode)
+myli.appendChild(newli) */
+
+
+//create append and create text node and add text by button
+/* function addElem(){
+ 
+    let myli = document.getElementById('disp');
+    let newli = document.createElement('li');
+    let textnode = document.createTextNode("ram")
+    newli.appendChild(textnode)
+    myli.appendChild(newli)
+    
+} */
+
+//insert li by text box by clicking on button
+/* 
+ function addElem(){
+    
+    let myli = document.getElementById('disp');
+    myli.className = 'new_li'                               // add class name in ul
+    let newli = document.createElement('li');
+    newli.className = 'new_li abc'                            //add classname in li                  
+    let mytext = document.getElementById('disptext').value;
+    let textnode = document.createTextNode(mytext)
+    newli.appendChild(textnode)
+    myli.appendChild(newli)
+    document.getElementById('disptext').value = " "
+}
+ 
+ */
+
+
+//add list element without append method...
+//use textcontent
+/* 
+function addElem(){
+    
+    let myli = document.getElementById('disp');
+    myli.className = 'new_li'                               // add class name in ul
+    let newli = document.createElement('li');
+    // newli.className = 'new_li abc'                            //add classname in li                  
+    newli.textContent = document.getElementById('disptext').value
+    myli.appendChild(newli)
+    document.getElementById('disptext').value = " "
+} */
+ 
+
+//remove element
+
+//document.body.removeChild(document.getElementById('box'));
+
+/* var boxElement = document.getElementById('box');
+// var libox = boxElement.firstElementChild;
+// var libox = boxElement.firstElementChild.nextElementSibling;
+var libox = document.getElementById('li1');  //to remove particular id
+boxElement.removeChild(libox)
+
+ */
+
+
+// to do list
+
+let box = document.getElementById('box')
+let li = document.createElement('li')
+li.firstElementChild.textContent= 'ramesh';
+box.appendChild(li)
