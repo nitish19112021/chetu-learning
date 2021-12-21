@@ -1,0 +1,1042 @@
+quackit
+
+show dbs
+db show current database
+
+//create databae
+use todo(database name)
+//create collection
+1. db.createCollection("tododata")
+2. db.tododata.insert({name:"abc"})
+
+//create doucment
+
+1. insert()    can be inserted one or many records
+	insert([{},{}])
+2. insertOne()
+3. insertMany()
+	insertMany([{},{},{}])
+
+db.todo.find()
+db.todo.find({})
+db.getCollection('todo').find()
+
+db.resturants.find({},{name:1,_id:0})		show full records but name is included and _id is not included
+
+Q) find those record in which score is greater than 50 and less than 60
+
+A) db.restaurants.find({grades:{$elemMatch:{score:{$gt:50,$lt:60}}}})
+
+db.getCollection('restaurants').find({"address.coord":{$gt:-73.856077}})
+
+db.restaurants.find({$and:[{cuisine : "American "},{'grades.score':{$gt:20}},{'address.coord':{$lt:-65.754168}}]})
+
+db.restaurants.find({"cuisine":{$ne:"American "}, "grades.score":{$gt:37}, "address.coord":{$lt:-54}})
+
+db.restaurants.find({
+    "cuisine":{$ne:"American "},
+    "grades.grade":"A",
+    "borough" : {$ne:"Brooklyn"}
+    }).sort({"cuisine":1})
+
+===Search starting letter Will in name.
+
+db.restaurants.find(
+			{"name":/^Wil/},
+			{"_id":1,"name":1,"borough":1, "cuisine":1}
+		)
+
+===Search last letter r in name.
+db.restaurants.find(
+			{"name":/r$/},
+			{"restaurant_Id":1,"name":1,"borough":1,"cuisine":1}
+		)
+
+////////aggregate()
+
+db.restaurants.aggregate([
+{$match:{"cuisine":"Irish"}}
+])
+
+
+//nested objectes
+db.restaurants.aggregate([
+{$group:{_id:"$grades.grade"}}
+])
+
+db.restaurants.aggregate([
+{$group:{_id:{borough:"$borough",cuisine:"$cuisine"}}}
+])
+
+db.restaurants.aggregate([
+{$match:{borough : "Brooklyn",}},
+{$group:{_id:{borough:"$borough",cuisine:"$cuisine"}}}
+])
+
+
+
+What is MongoDb Schema :
+
+A schema is a model that represents your data structure in your database
+we have database todo and in this database we have collections user and musicians. In this collection we have document. document have property of name, email, address
+Mongo Db schema is define document data structure.
+
+1) Schema less:			Flexiable schema :			Fixed Schema:
+example: 			example:
+				
+{				{
+				}	
+"title":"Book",				
+"price":12.99				
+}
+
+{
+"name":"Book",
+"avaibale":false
+}
+
+
+2) Flexiable Schema
+
+{
+"name":"abc",
+"email":"abc@gmail.com"
+}
+
+{
+"name":"abc",
+"email":"abc@gmail.com",
+"phone_no":9911582150
+}
+
+3) Fixed Schema :
+
+example:
+
+	{
+	  "_id":"1",
+	  "Name":"nit",
+	  "salary":"123"	  	
+	}
+
+	{
+	  "_id":"2",
+	  "Name":"nit1",
+	  "salary":"1234"	  	
+	}
+
+	field =	{"<fieldName>":"<value>"}
+
+Data Type:
+1) text 1) boolean 3) number 4) numberInt numberLong numberDecimal object 5) isodate 6) embeded document
+
+
+
+
+
+what is mongoDb Model:
+
+MongoDb Model are higher order constructors that take a Schema and create the instance of document
+
+// const parseSchema = require('mongodb-schema');
+// const MongoClient = require('mongodb').MongoClient;
+
+// const dbName = "todo";
+
+// MongoClient.connect(`mongodb://localhost:27017/${dbName}`,{useNewUrlParser:true},(err,client)=>{
+//     if(err) return console.error(err);
+//     console.log("connection created.")
+//     const db = client.db(dbName);
+//     parseSchema(db.collection('musicians').find(),(err,schema)=>{
+//         if(err) return console.error(err)
+//         console.log(JSON.stringify(schema,null,2))
+//     })
+// })
+
+
+Mongoose :
+
+Mongoose is Object data modeling library of mongodb and node js
+
+
+const express = require('express');
+const mongoose = require('mongoose');
+const server = '127.0.0.1:27017'
+const database = 'test'
+const app = express()
+
+mongoose.connect(`mongodb://${server}/${database}`,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+.then(()=>{console.log("Database connected..")})
+.catch(err=>console.error("error"+err))
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,()=>{
+    console.log("server running on port "+PORT)
+})
+
+
+
+server.js
+
+const express = require('express');
+const mongoose = require('mongoose');
+
+const postroutes = require('./routes/api/posts_controller')
+const app = express()
+app.use(express.json())
+
+mongoose.connect(`mongodb://127.0.0.1:27017/test`,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+.then(()=>{console.log("Database connected..")})
+.catch(err=>console.error("error"+err))
+
+app.use('/api/posts',postroutes)
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,()=>{
+    console.log("server running on port "+PORT)
+})
+
+------------------------------
+post controller file
+
+const express = require('express');
+const router = express.Router()
+
+const posts = require('../../models/posts')
+
+router.post('/',async (req,res)=>{
+    const newPost = new posts(req.body)
+    try{
+            const post = await newPost.save(()=>{
+                if(!post){console.log("Record not submitted")}
+                res.status(200).json(post)
+            })
+        
+            
+        // res.status(200).send({status:true,newPost,message:"Record inserted."})
+    }
+    catch{
+        res.status(400).json({msg:error})
+    }
+})
+
+router.get('/', async (req,res)=>{
+    try{
+        const post = await posts.find();
+        if(!post){console.log("Did not fetch the record")}
+        res.status(200).send({staus:true,post,message:"All record"})
+    }
+    catch(err){
+        res.status(400).json({msg:err})
+    }
+})
+
+// show one record
+
+router.get('/:id', async (req,res)=>{
+    try{
+        const post = await posts.findById(req.params.id)
+        if(!post) throw Error('no item')
+        res.status(200).json(post)
+    }
+    catch(err){
+        res.status(400).json({message:"Not found"})
+    }
+})
+
+//update record by id
+
+router.patch('/:id' , async (req,res)=>{
+    try{
+        const post = await posts.findByIdAndUpdate(req.params.id,req.body)
+        if(!post) throw Error("error..")
+        res.status(200).json({sucess: true, post, message: "Record Updated successfully"})
+    }
+    catch(err){
+        res.status(400).json({message:err})
+    }
+})
+
+router.delete('/:id', async (req,res)=>{
+    try{
+        const post = await posts.findByIdAndDelete(req.params.id)
+        if(!post) throw Error("error...")
+        res.status(200).json({success:true,message:"delete record successfully"})
+    }
+    catch(err){
+        res.status(400).json(err)
+    }
+})
+
+module.exports = router;
+
+------------------
+
+posts.js
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const postschema = new Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    body:{
+        type:String,
+        required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now   
+    },
+})
+
+module.exports = mongoose.model('posts',postschema)
+
+
+Apply joi validation on mongoose schema.
+Create login route and validate email if email is not in proper format at login stage
+Work with JWT token and create JWT token and login with JWT token is in process
+
+
+
+
+_____________________________
+
+router.post('/login',(req,res)=>{    
+
+    const email = req.body.email;
+    const validateEmail= function (email) {
+        return String(email).match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
+    }
+    if(!validateEmail(email)){
+        res.json({message:"Please enter valid email"})
+    }
+    else{
+        userSignUp.findOne({email:email},(err,user)=>{
+
+            if(err) res.json({message:err})
+            if(!user){
+                res.json({message:"not found"})
+            }
+            res.status(200).json({message:"login successfully"})
+        })    
+    }
+})
+
+
+
+
+
+
+
+
+_________________________________________________________
+
+jwt token is created with login route. 
+Decrypt the password and login with email and password and generate JWT token
+create a middleware file authentication and login with auth file
+
+
+
+
+
+
+const express = require('express');
+const { joivalidate } = require('./joiValidation');
+const jwt = require("jsonwebtoken");
+const router = express.Router();
+const userSignUp = require('./signupSchema');
+require('dotenv').config()
+const auth = require('../../middleware/userAuth');
+
+//add user
+router.post('/addUser',(req,res)=>{
+    //joi validation
+    const { error } = joivalidate.validate(req.body)
+    if(error) return res.json(error.details[0].message)
+    const usersdataSignup = new userSignUp({
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password,
+        mobile:req.body.mobile
+    });   
+    userSignUp.findOne({email:req.body.email},(err,existingUser)=>{
+        if(err){res.status(400).json({message:err})}
+        if(existingUser){
+            res.json({message:"user is already exists"})
+        }else{
+            usersdataSignup.save((error,data)=>{
+                if(error) throw error;
+                res.status(200).json({data, message:"data inserted.. "})
+            })
+        }
+    })   
+})
+
+//login user
+router.post('/login',(req,res)=>{    
+    //create JWT token
+    const token = jwt.sign({
+        email: req.body.email,
+        password:req.body.password
+    },process.env.TOKEN_KEY,{expiresIn:"2h"})
+    //create validation for user login that email should be porper format.
+    const email = req.body.email;
+    const validateEmail= function (email) {
+        return String(email).match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
+    }
+    if(!validateEmail(email)){
+        res.json({message:"Please enter valid email"})
+    }
+    else{
+        userSignUp.findOne({email:email},(err,user)=>{
+            //save the JWT token
+            userSignUp.token = token
+            if(err) res.json({message:err})
+            if(!user){
+                res.json({message:"not found"})
+            }
+            res.status(200).json({token:token,message:"login successfully"})
+        })    
+    }
+})
+
+router.post('/welcome',auth,(req,res)=>{
+    res.json({status:200, message:"login successfully"})
+})
+
+module.exports = router;
+
+
+
+
+
+
+____________________________
+
+login user
+
+    const token = jwt.sign({email:req.body.email},
+        process.env.TOKEN_KEY,
+        {expiresIn:"2h"});
+        userSignUp.token = token;
+    
+        //validate email for proper format
+    const email = req.body.email;
+    const validateEmail= function (email) {
+        return String(email).match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
+    }
+    if(!validateEmail(email)){
+        res.json({message:"Please enter valid email"})
+    }
+    else{
+        userSignUp.findOne({email:email},(err,user)=>{
+
+            if(err) res.json({message:err})
+            if(!user){
+                res.json({message:"not found"})
+            }
+            res.status(200).json({token:token,message:"login successfully"})
+        })    
+    }
+
+
+
+
+
+_______________________________________________________
+
+login user
+
+router.post('/login',(req,res)=>{  
+
+    
+    //login with email
+    const email = req.body.email;
+    userSignUp.findOne({email:email}).then(user=>{
+        if(!user) {
+            res.json({message:"you are not a valid user. Please SignIn!"})
+        }
+        bcrypt.compare(req.body.password,userSignUp.password, (err,result)=>{
+            if(err){
+                res.json({message:"auth failed."})
+            }
+            if(result){
+                //create token
+                const token = jwt.sign({email:req.body.email, password:req.body.password},
+                    'security_key',{expiresIn:"2h"})
+                    console.log(req.body.password)
+                    console.log(userSignUp.password)
+                userSignUp.token = token;
+            res.json({token:token,message:"auth successful, Welcome"})
+            }
+        })
+    }).catch((error)=>{
+        console.error(error)
+        res.json({error:error})
+    })
+    // userSignUp.findOne({email:email},(err, user)=>{
+    //     if(err) res.json({message:"error occured."})
+    //     if(!user) {
+    //         res.json({message:"not found"})
+    //     }
+    //     res.status(200).json({token:token,message:"login successfully"})
+    // })
+})
+
+--------------------------
+naveen
+
+app.post('/signup',async(req,res)=>{
+    const salt = await bcrypt.genSalt(10)
+    req.body.password = await bcrypt.hash(req.body.password,salt)
+      const user =  await EmpModel.findOne({email:req.body.email})
+        EmpModel.create(req.body).then(user=>{
+        const token = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{"expiresIn":"1d"})
+        const link = "http://localhost:3000/account/activation/"+token
+        const transporter = nodemailer.createTransport({
+            service:"gmail",
+            secure:false,
+            port:587,
+         auth:{
+            user:process.env.email,
+            pass:process.env.password
+         },
+         tls: {rejectUnauthorized: false}
+        })
+        const mailData = {
+            from:process.env.email,
+            to:user.email,
+            subject:"Account Activation",
+            text:link
+        };
+        transporter.sendMail(mailData,(error,info)=>{
+        if(error){
+            console.log(error)
+        }else{
+            console.log(info.response)
+            res.send("Confirmation email has been sent to your email addrsss so you need to click confirm to your account activation ")
+        }
+        })
+    })
+
+})
+app.get('/account/activation/:token',async(req,res)=>{
+   
+    // const token = req.params.token
+    // jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,async(err,payload)=>{
+    // if(err)return res.status(401).send({code:401,message:"failure",error:"Token is expired or may be incorrect"})
+    // const user = await EmpModel.findOne({email:payload.email})
+    // user.isActive = true
+    // user.save().then((success)=>{
+    //     res.status(200).send({code:200,message:"success",result:"your account has been activated successfully"})
+
+    // }).catch((err)=>{
+    //     res.json(err)})
+    // })
+
+    res.send("Hello nitish how are you ")
+})
+
+
+app.post('/signin',async(req,res)=>{
+    const user =  await EmpModel.findOne({email:req.body.email})
+    if(!user){
+        if(user.isActive){
+            const validatePassword = await bcrypt.compare(req.body.email,user.password)
+            if(validatePassword){
+                const token = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{"expiresIn":"30m"})
+                const refreshtoken = jwt.sign({email:user.email},process.env.REFRESH_TOKEN_SECRET,{"expiresIn":"1h"})
+                res.send({message:"Token has been Generate successfully",token:token,refreshToken:refreshtoken})
+                
+            }else{
+                res.send("Password is incorrect")
+            }
+            
+        }
+        else{
+            res.send("Your account is not activated yet")
+        }
+    }
+    else{
+        res.send("User is not found")
+    }
+})
+app.listen(port,()=>{
+    console.log(`server is ready on ${port}`)
+})
+__________________________________
+
+today task 
+
+1. Implement change password login in login route and this password save in bcrypt form.
+2. Implement forget password in login route, In this create a link with email id and token and use it and get email id and token from that link
+3. use this token to update the password.
+4. Create the product list schema.
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------
+
+naveen
+--------------------------------
+
+//acount activation
+
+
+const express = require('express')
+const app = express();
+const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt');
+const schemamodel = require('./appschema')
+const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken');
+const { schema } = require('./appschema');
+const nodemailer = require('nodemailer')
+var path=require('path')
+const port = 3000
+require('dotenv').config()
+
+app.use(bodyParser.json())
+
+// var randtoken = require('rand-token')
+
+
+const query = "mongodb+srv://admin:admin@cluster0.b9pn7.mongodb.net/mydatabase?retryWrites=true&w=majority"
+mongoose.connect(query, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connection successful")
+}).catch(err => {
+    console.log("Error", err)
+})
+
+app.post('/register',async (req,res) => {
+    const salt = await bcrypt.genSalt(10)
+    req.body.password = await bcrypt.hash(req.body.password,salt)
+        schemamodel.create(req.body).then(user => {
+            const token = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{"expiresIn":"1d"})
+            const link = 'http://localhost:3000/account/activation/'+token
+    var transporter = nodemailer.createTransport({
+        service:"gmail",
+        secure:false,
+        port:587,
+        auth: {
+          user: process.env.useremail,
+          pass: process.env.userpassword
+        },
+        tls: {rejectUnauthorized: false}
+      });
+    const mailData = {
+        from :process.env.useremail,
+        to:user.email,
+        subject:"Account Activation",
+        text:link
+    };
+    transporter.sendMail(mailData,(error,info)=>{
+        if(error){
+             console.log(error)
+        }
+        else{
+            console.log(info.response)
+            res.send("One confirmation email has been sent to your email address so You need to confirm your email for account activation")
+            }
+        })
+    })
+})
+
+
+app.get('/account/activation/:token',async(req,res) => {
+     const vToken = req.params.token
+     jwt.verify(vToken,process.env.ACCESS_TOKEN_SECRET, async (err,payload)=>{
+        if(err) return res.status(401).send({code:401,message:"faliure",error:"Token is incorrect or it is expired"})
+        const user = await schemamodel.findOne({email:payload.email})
+        user.isActive = true
+        user.save().then((success)=>{
+            res.status(200).send({code:200,message:"success",result:"Your account has been activated successfully"})
+        }).catch((err)=>{res.json(err)})
+     })
+})
+
+app.post("/login",async (req,res)=>{
+    const user = await schemamodel.findOne({email:req.body.email})
+    if(user){
+        if(user.isActive){
+     const validatePassword = await bcrypt.compare(req.body.password, user.password)
+     if(validatePassword){
+         const token = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{"expiresIn":"15m"})
+         const refreshtoken = jwt.sign({email:user.email},process.env.REFRESH_TOKEN_SECRET,{"expiresIn":"30m"})
+         res.send({message:"token has been Generate Successfully",token:token,refreshToken:refreshtoken})
+     } else{
+         res.send("Password is incorrect")
+     }
+    } else {
+        res.send("Your account is not activated yet.")
+    }
+    }else{
+        res.send("User not found")
+    }
+ })
+ app.post('/refreshtoken',(req,res)=>{
+    const refreshToken = req.body.refreshToken
+    if(refreshToken == null) return res.status(401).send("Token not found")
+    jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
+        if(err) return res.status(401).send("Token is incorrect or it is expired")
+        const accessToken = generateAccessToken({email:req.body.email})
+        const refreshtoken = jwt.sign({email:user.email},process.env.REFRESH_TOKEN_SECRET,{"expiresIn":"30m"})
+        res.send({accessToken:accessToken,refreshToken:refreshtoken})
+    })
+})
+function generateAccessToken(user){
+    return jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,{"expiresIn":"15m"})
+}
+ //we want to verify token
+ const chektoken = (req,res,next)=>{
+     //here is token
+     const header = req.headers.authorization
+     const token = header && header.split(' ')[1]
+     console.log(token)
+     if(token == null) return res.send('token not found')
+     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,verifiedJwt)=>{
+         if(err)return res.send("token is expired or it may be incorrect")
+         next();
+     })
+ }
+ app.use(chektoken);
+ app.get('/',(req,res)=>{
+     schemamodel.find((err,data)=>{
+         if(err){
+             console.log(err)
+         }
+         else{
+             res.send(data)
+         }
+
+     })
+ })
+
+app.listen(port, () => {
+    console.log(`server is ready on ${port}`)
+})
+
+
+
+
+----------------
+
+const updateCategory = await masterSchema
+    .updateMany({'subCategory.$._id' : req.params._id},
+    {$set:{'subCategory.$.nameSubcat':req.body.name}})
+    
+----------------------
+// const updateCategory1 = await masterSchema.findOne({'subCategory.$._id' : req.params._id});
+    // console.log("updateCategory1: ", updateCategory1);
+    //console.log(req.body.subCategory[0].nameSubcat)
+    // await masterSchema.updateOne({_id:req.params._id},
+    // {$set:{"subCategory.$.nameSubcat":req.body.subCategory[0].nameSubcat}},(error,data)=>{
+    //     if(error) throw error;
+    //     if(data){
+    //         res.send("product updated.")
+    //     }else{
+    //         res.send("not updated")
+    //     }
+    // })
+    
+    // .findByIdAndUpdate(req.params._id,
+    //     {$set:{'subCategory.nameSubcat':req.body}}
+    //     ,(err, data)=>{
+    //         console.log(data)
+    //     })
+    
+//     try{
+//         if(!updateCategory){
+//             res.status(400).json("Category not updated.")
+//         }
+//         else{
+//             res.status(200).json({updateCategory,message:"category updated."})
+//         }
+//     }
+//     catch(error){
+//             res.status(404).json(error)
+//     }
+// })
+
+// router.post("/addSubCategory",async (req,res)=>{
+    
+//     const productSubCategory = await masterSchema.subcatmodel({
+//             name: req.body.name
+//     })
+//     const subProduct  = await productSubCategory.save();
+//     if(!subProduct) {
+//         res.status(400).json({message:"subcategory is not added."})
+//     }else{
+//         res.status(200).json({subProduct,message:"product add"})
+//     }
+
+
+------------------
+
+subcategory name updated
+
+json data in postman:
+
+{
+	"nameCat":"cloths",
+	"subCategory":[{"nameSubcat":"abc"}]
+}
+
+
+subcategory update by findOneandupdate
+router.patch("/updateCategory/:_id", (req,res)=>{
+        update subcategory by select id
+         masterSchema.findOneAndUpdate(
+             {"_id:" : req.params._id, "subCategory._id":'61b8603e3e4e8c31d2bf54a9'},
+             {$set:{'subCategory.$.nameSubcat' : req.body.subCategory[0].nameSubcat}},
+             (err,data) =>{
+                 if(err) throw err;
+                 res.status(200).json({data,message:"data updated"})
+             }
+             )
+    
+
+
+
+
+________________________
+
+if(userDetails && userDetails.userEmail){
+                User.find({"userEmail":userDetails.userEmail}, (err, data)=>{
+                    if(err){
+                        return reject({status:400, message:"error"})
+                    }
+                    else{
+                        if(data.length>0){
+                            return reject({status:400, message:"already exist"})
+                        }
+                        const user = new User({
+                            userName:userDetails.userName,
+                            userPassword: userDetails.userPassword,
+                            userEmail:userDetails.userEmail,
+                            userPassword:userDetails.userPassword
+                        })
+                        console.log(user)
+                        user.save().then(data=>{
+                            return resolve({status:ture, message:"Register Successfully"})
+                        }).catch(err=>{
+                            return reject({status:400, message:"Not register"})
+                        })
+        
+                    }
+                })
+            }
+                
+        })
+ 
+
+
+  // const userData = new userTable({
+    //     userName:req.body.userName,
+    //     userPassword: req.body.userPassword,
+    //     userEmail:req.body.userEmail,
+    //     userPassword:req.body.userPassword
+    // })
+    // if(!userData){
+    //     res.status(400).json({message:"User not Added."})
+    // }else{
+    //     userData.save()
+    //     res.status(200).json({userData,message:"user added"})
+    // }
+
+
+
+
+
+15-12
+_____________
+
+           // if(productName){
+            //     const cartData = new Cart({cartItem:productName})
+            //     cartData.save((err1,result1)=>{
+            //     if(err1) res.json(err1)
+            //     else{
+            //         res.json(result1)
+            //     }
+            // })
+
+
+
+---------------------
+router.post("/addTocart/:_id",async (req,res)=>{
+     
+    const user = await User.findOne({"_id":req.body._id})
+    
+    if(!user){
+        res.status(404).json({message:"invalid user"})
+    }else{
+            // const token = jwt.sign({user},process.env.TOKEN_KEY,{expiresIn:"10m"})
+            product.findOne({"_id":req.params._id},(error,data)=>{
+                if(error) res.json(error)
+                else{
+                    const cartData = new Cart({cartItem:data})
+                        cartData.save((err1,result1)=>{
+                        if(err1) res.json(err1)
+                        else{
+                            res.json(result1)
+                        }
+                    })
+                }
+            })           
+        }
+    }
+    
+)
+
+
+___________________________
+
+router.post("/addTocart/:_id",async (req,res)=>{     
+    const user = await User.findOne({"_id":req.body._id})
+    
+    if(!user){
+        res.status(404).json({message:"invalid user"})
+    }else{
+            // const token = jwt.sign({user},process.env.TOKEN_KEY,{expiresIn:"10m"})
+            const productName = await product.findOne({"_id":req.params._id})
+            if(productName){
+                const cartData = new Cart({cartItem:productName})
+                cartData.save((err1,result1)=>{
+                if(err1) res.json(err1)
+                else{
+                    res.json(result1)
+                }
+            })
+            
+        }
+    }
+})
+
+16-12
+_____________________________
+
+
+
+// router.post("/addTocart/:id",async (req,res)=>{     
+    
+//     User.findOne({"_id":req.params.id})
+//     .select("_id")
+//     .populate("userCart")
+//     .then(result=>{res.json(result)}).catch(err=>{res.json("error"+err)})
+// })
+
+
+
+------------------
+
+User.findOne({"_id":req.params.id}).select("_id").then(result=>{
+     
+     const prod = product.find({"_id":req.body._id})
+     console.log(prod)
+     const cart = new Cart({
+         userId:result,
+         cart: prod
+     })
+     cart.save((err)=>{if(err){res.json("error"+err)}})
+     Cart.findOne().populate({path:"Items"}).then(result=>{res.json(result)}).catch(err=>{
+         res.json("err"+err)
+     })
+ })
+
+})
+
+------------------------------------------------------------------------
+
+post-create.component.ts
+
+import { Component } from "@angular/core";
+
+@Component({
+  selector:"app-post-create",
+  templateUrl:"./post-create.component.html"
+})
+
+
+export class PostCreateComponent{
+
+  newPost = 'no content'
+  onAddPost(postInput:HTMLTextAreaElement){
+    console.log(postInput)
+    this.newPost = 'This user post'
+  }
+}
+--------------------------------------------------------
+export class PostCreateComponent{
+
+  newPost = 'no content'
+  onAddPost(postInput:HTMLTextAreaElement){
+
+    this.newPost = postInput.value
+  }
+}
+
+
+
+post-crete.component.js
+
+<textarea  rows="6" [value]="newPost" #postInput></textarea>
+<hr>
+<button (click)="onAddPost(postInput)">Click</button>
+<p>{{newPost}}</p>
+
+
+
+=======
+
+
+
+two way binging
+import { FormsModule } from '@angular/forms';
+
+import[
+FormsModule
+]
+---------------
+import { Component } from "@angular/core";
+
+@Component({
+  selector:"app-post-create",
+  templateUrl:"./post-create.component.html"
+})
+
+export class PostCreateComponent{
+  enterValue = ""
+  newPost = 'no content'
+  onAddPost(){
+
+    this.newPost = this.enterValue
+  }
+}
+
+
+--------------
+
+<textarea  rows="6" [(ngModel)]="enterValue"></textarea>
+<hr>
+<button (click)="onAddPost()">Click</button>
+<p>{{newPost}}</p>
