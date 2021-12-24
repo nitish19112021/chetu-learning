@@ -13,6 +13,18 @@ router.post("/addProduct",verifyTokenAndAdmin,async (req,res)=>{
     }
 })
 
+router.post("/updateProduct/:id",verifyTokenAndAdmin, async (req,res)=>{
+    try{    
+    const updateProduct = await Product.findByIdAndUpdate({_id:req.params.id},
+        {$set:req.body},
+        {new:true})
+
+        res.status(200).json(updateProduct)
+    }catch(err){
+        res.status(400).json(err)
+    }
+})
+
 //update user
 // router.put("/:id",verifyTokenAndAuthorization, async (req,res)=>{
 //     // if(req.user.id=== req.params.id && req.user.isAdmin){
