@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p class="demo1"></p>
+    <script>
+
+        var str = "hello world this is a good programming practice";
+        var l = str.length;
+        var match = prompt("enter word for searching");
+        var c = str.charAt(i);
+        var flag = true;
+        for(var i=0;i<l;i++){
+            if(c== match){
+                flag = false;
+            }
+        }
+        if(flag == false){
+            document.getElementById("demo").innerHTML = match+" string is matched";
+        }else{
+            document.getElementsByClassName("demo1") = match+" string is not matched";
+        }
+    </script>
+    <!-- 
+    <script>
+        var str = "Hi , this is my Class of JAVASCRIPT";
+        var l = str.length;
+        var cap = 0;
+        var smal = 0;
+        var vowel = 0;
+        for(var i=0;i<l;i++){
+            if(str.charAt(i) >="A" && str.charAt(i)<= "Z"){
+            cap = cap+1;
+                document.write(str.charAt(i));        
+            }
+            
+            else{
+                smal = smal + 1;
+            }            
+        }
+        var j=0;
+        while(j<l){
+            var c = str.charAt(j);
+            if(c=="a"|| c=="e"||c=="i"||c=="o"||c=="u"){
+                vowel = vowel+1;
+            }
+            j++
+        }
+        
+        document.write("capital letter is "+cap+"<br>");
+        document.write("small letter are : "+smal+"<br>");
+        document.write("vowels are : " +vowel);
+        
+    </script> -->
+    <!-- <script>
+       //////////////search number from array///////////
+        var arr = [2,4,5,6,8,58,65,78,98];
+        num = parseInt(prompt("enter number for serach"));
+        l = arr.length;
+        var tmp= true;
+        for(var i = 0;i<l;i++){
+            if(arr[i] == num){
+                tmp =false;
+            }
+        }
+        if(tmp == false){
+            document.write(`${num} is searched`);
+        }else{
+            document.write(`${num} is not serached`)
+        }
+
+    </script> -->
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class overloading</title>
+</head>
+<body>
+    <input type="button" value="click" onclick="f1()">
+    <script>
+        function f1(){
+            class myclass {
+                sum(){
+                    document.write("without parameter");
+                }
+                sum(x){
+                    document.write("with parameter");
+                }
+                sum(x,y){
+                    document.write("with two parameter");
+                }
+            }
+            obj = new myclass();
+            obj.sum();
+        }
+    </script>
+    <!-- <script>
+        function f1(){
+        class Employee{
+            constructor(){
+                var eno;    //private variable access by getter and setter
+                var ename
+            }
+            static setemp(x,y){
+                this.eno = x;
+                this.ename = y;
+            }
+            static getemp(){
+                return this.eno+" "+ this.ename;
+            }
+        }
+        emp = new Employee();
+        Employee.setemp(102,"nitish");
+        document.write(Employee.getemp());   //access private variable by getter method 
+        //document.write(emp.eno)         //access private variable without getter method
+    }
+    </script> -->
+    
+    <!-- <script>
+                
+        function f1(){
+            class employee{
+                constructor(eno){
+                    this.eno = eno;
+                    //var eno; //         allowed
+                    //let eno; //         allowed
+                    // const eno;       not allowed
+                }
+                setemp(x){
+                    this.eno = x;
+                
+                }
+                getemp(){
+                    return this.eno;
+                }
+                
+            }
+            var emp = new employee(101);
+            
+            document.write(emp.getemp())    // by getter and setter method
+            document.write(emp.eno);        //without getter and setter method.
+        }
+    </script> -->
+</body>
+</html>

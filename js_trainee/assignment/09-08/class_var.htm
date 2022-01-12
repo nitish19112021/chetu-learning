@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class variable </title>
+
+</head>
+<body>
+    <input type="button" value="click" onclick="fn()">
+    <script>
+        //class variable : there are three type of variable. 1. local variable 2. instance variable
+        //3. static variable
+        //local variable: variable that can be declared in any block except class block is called local varaible.
+        //instance variable: are declared in class block is called instance or non static variable.
+        // static variable : are declared in class block along with static keyword.
+        class Emp{
+            eno = 101;
+            static ename = "amit";
+            esal = 55555;
+             static info = function(a,b){
+                return a+b;
+            }
+
+        }
+        function fn(){
+            emp = new Emp();
+            document.write("eno is :" +emp.eno+"<br>");
+            document.write("ename is :" +Emp.ename+"<br>");
+            document.write(Emp.info(2,5)); 
+        }
+    </script>
+</body>
+</html>

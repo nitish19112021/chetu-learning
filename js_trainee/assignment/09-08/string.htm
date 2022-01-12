@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>string</title>
+ </head>
+ <body>
+     <input type="button" value="click" onclick="f1()">
+
+ <script>
+     //////////capital letter and small letter///////////
+     function f1(){
+        var str="abckeabddkkeavncliealkieglLAKKIAGKIZLALXKEAKEIHHSLESK";
+        var cl = 0;
+        var sl = 0;
+        var l=str.length;
+        var vowel = 0;
+        //document.write(l+"<br>");
+        var i = 0;
+        while(i<l){
+            var c= str.charAt(i);
+            if(c>="A" && c<="Z"){
+                cl++;
+            document.write(c);
+            }
+            else if(c>="a" && c<="z"){
+                sl = sl+1;
+            }
+            i++;
+        }
+
+        /////////// vowel letter search////////////
+        var j=0;
+        while(j<l){
+            var c = str.charAt(j);
+            if(c=="a"|| c=="e"||c=="i"||c=="o"||c=="u"){
+                vowel = vowel+1;
+            }
+            j++
+        }
+        document.write("<br>Capital letter : "+cl+"<br>");
+        document.write("Small letter : "+sl+"<br>");
+        
+        document.write("vowel : "+vowel)
+        
+        
+        
+        
+
+        /* var str = "DCHkjaedufijdDFDFijkjdHHfjEEiojkljjkWWkkksdfdfdkjijllkkkaD3D4F5J6D7K7F8JDJJK";
+        var i=0;
+        var l =str.length;
+        document.write("lenght : "+l+"<br>")
+        var cl=0;
+        var sl=0;
+        var digit=0;
+        var vo=0;
+        
+        while(i<l){
+            var c=str.charAt(i);    
+            if(c>= 065 && c<=090){
+                cl =  cl+1
+            }
+            else if(c >= "a" && c <="z"){
+                sl = sl+1;
+            }
+             else if(c>0 && c<9){
+                digit = digit+1;
+            } 
+
+            i++;
+        }
+        document.write("Capital letter : "+cl+"<br>");
+        document.write("Small leter : "+sl+"<br>");
+        document.write("Digits : " +digit+"<br>");
+
+        for(i=0; i<=l;i++){
+            if(str.charAt(i)=="a"||str.charAt(i)=="e"||str.charAt(i)=="i"||str.charAt(i)=="o"||str.charAt(i)=="u")
+            {
+                vo++
+            }
+
+        }
+        document.write("Vowels : "+vo) */
+
+
+       /*  var str = "AaEbcdiecdsfdfgdfbdffdbgrtfgZBDFDFDS";
+        var upper = 0;
+        var lower = 0;
+        vowelCount = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str.charAt(i) == "a" || str.charAt(i) == "e" || str.charAt(i) == "i" || str.charAt(i) == "o" || str.charAt(i) == "u") {
+            vowelCount += 1;
+            }
+            var ch = str.charAt(i);
+            if (ch > "A" && ch <= "Z") {
+            upper++;
+            }
+            else if (ch > "a" && ch <= "z") {
+            lower++;
+            }
+        }
+        document.write("<h1>"+str+"</h1>");
+            document.write("Total vowel=" + vowelCount + "<br>");
+        document.write("Upper Case charracter:" + upper + "<br>");
+        document.write("Lower Case charracter:" + lower+"<br>");
+        document.write("Total charracter:" + str.length);
+    */
+   }
+ </script>    
+ </body>
+ </html>
+ 

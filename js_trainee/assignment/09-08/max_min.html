@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maximum and minimum</title>
+</head>
+<body>
+    <input type="button" value="click" onclick="f1()">
+    <script>
+
+        ////////mininum value///////////
+        function f1(){
+            var arr = [2,5,4,55,24,35,58,5,7];
+            var min;
+            var max;
+            var l = arr.length;
+            for(var i = 0; i<l; i++){
+                for(var j=i+1;j<l;j++){
+                    if(arr[i]<arr[j]){
+                        min = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = min;
+                    }
+                }
+            }
+            document.write(`minimum value is : ${min}<br>`);
+            ///////////////maximum value///////////////
+            for(var x=0;x<l;x++){
+                for(var y=x+1;y<l;y++){
+                    if(arr[x]>arr[y]){
+                        max = arr[x];
+                        arr[x] = arr[y];
+                        arr[y] = max;
+                    }
+                }
+            }
+            document.write(`maximum value is : ${max}`);
+        }
+        
+    </script>
+</body>
+</html>

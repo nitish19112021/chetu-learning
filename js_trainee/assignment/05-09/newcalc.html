@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <form accept="" class="calculator" name="calc">
+        <input type="text" name="txt" class="inputArea">
+        <span onclick="document.calc.txt.value +='1';">1</span>
+        <span onclick="document.calc.txt.value +='2';">2</span>
+        <span onclick="document.calc.txt.value +='3';">3</span>
+        <span class="clear" onclick="document.calc.txt.value +='';">C</span>
+        <span onclick="document.calc.txt.value +='4';">4</span>
+        <span onclick="document.calc.txt.value +='5';">5</span>
+        <span onclick="document.calc.txt.value +='6';">6</span>
+        <span class="operations plus" onclick="document.calc.txt.value +='+';">+</span>
+        <span onclick="document.calc.txt.value +='7';">7</span>
+        <span onclick="document.calc.txt.value +='8';">8</span>
+        <span onclick="document.calc.txt.value +='9';">9</span>
+        <span onclick="document.calc.txt.value +='0';">0</span>
+        <span onclick="document.calc.txt.value +='.';">.</span>
+        <span onclick="document.calc.txt.value =backspace(document.calc.txt.value);">B</span>
+        <span class="operations minus" onclick="document.calc.txt.value +='-';">-</span>
+        <span class="equal" onclick="document.calc.txt.value = calculation(document.calc.txt.value);">=</span>
+        <span class="operations divide" onclick="document.calc.txt.value +='/';">/</span>
+        <span class="operations multi" onclick="document.calc.txt.value +='*';">*</span>
+        
+    </form>
+    <div id="history">
+        <h3>history</h3>
+        <p>3+5 = 8</p>
+    </div>
+    <script>
+        let history = document.getElementById("history");
+        function calculation(v){
+            para = document.createElement('p');
+            data= v + " = " + eval(v);
+            para.innerText = data;
+            history.appendChild(para);
+            return eval(v)
+        }
+
+        function backspace(b){
+                return b.slice(0,b.length - 1);
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+[
+    {
+        "eno": 101,
+        "ename": "Amit",
+        "esal": 30000
+    },
+    {
+        "eno": 102,
+        "ename": "Rahul",
+        "esal": 400000
+    },
+    {
+        "eno": 103,
+        "ename": "sumit",
+        "esal": 50000
+    },
+    {
+        "eno": 104,
+        "ename": "rohit",
+        "esal": 6000
+    },
+    {
+        "eno": 105,
+        "ename": "Harsh",
+        "esal": 7000
+    }
+]

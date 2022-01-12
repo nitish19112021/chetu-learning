@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p class="demo1"></p>
+    <p class="demo1"></p>    
+
+    <script>
+        // program to check leap year
+        
+        function Checkyear(year){
+            if(year % 4 == 0 && year %100 != 0 || year %400 == 0){
+                document.write(`${year} is leap year`);
+            }
+            else{
+                document.write(`${year} not a leap year`);
+            }
+        }
+        year = prompt("enter year")
+        Checkyear(year)
+
+        
+        /*         function checkLeapYear(year) {
+
+                //three conditions to find out the leap year
+                if ((0 == year % 4) && (0 != year % 100) || (0 == year % 400)) {
+                    console.log(year + ' is a leap year');
+                } else {
+                    console.log(year + ' is not a leap year');
+                }
+                }
+
+                // take input
+                const year = prompt('Enter a year:');
+
+                checkLeapYear(year); */
+
+        /// swapping number without third variable
+        /* var a = 10;
+        var b = 15;
+        a = a+b;
+        b= a-b;
+        a= a-b
+        document.write(a);
+        document.write(b); */
+        ////  finding remainder and quote
+
+
+
+        /* var a = 43;
+        var b = 5;
+        var c = a/b;
+        document.write(c) */
+
+
+        ///// find ASCII VALUE OF CHARATOR
+        /* str = "hello";
+            var a = str.charCodeAt(0)
+            document.write(a) */
+
+        // program to generate fibonacci series up to n terms
+
+// take input from the user
+
+
+/* const number = parseInt(prompt('Enter the number of terms: '));
+let n1 = 0, n2 = 1, nextTerm;
+
+console.log('Fibonacci Series:');
+
+for (let i = 1; i <= number; i++) {
+    console.log(n1);
+    nextTerm = n1 + n2;
+    n1 = n2;
+    n2 = nextTerm;
+}
+ *//* 
+                ///factorial
+                // program to find the factorial of a number
+
+        // take input from the user
+        const number = parseInt(prompt('Enter a positive integer: '));
+
+        // checking if number is negative
+        if (number < 0) {
+            console.log('Error! Factorial for negative number does not exist.');
+        }
+
+        // if number is 0
+        else if (number === 0) {
+            console.log(`The factorial of ${number} is 1.`);
+        }
+
+// if number is positive
+else {
+    let fact = 1;
+    for (i = 1; i <= number; i++) {
+        fact *= i;
+    }
+    document.write(`The factorial of ${number} is ${fact}.`);
+}
+
+ */
+      /*   var arr = new Array();
+        var i=0;
+        var tmp;
+        do{
+            arr[i] = parseInt(prompt("enter the number"));
+            i++;
+        }while(i<5)
+        
+        function f1(arr){
+            var j = 0;
+            while(j<arr.length){
+                var k = j+1;
+                while(k<arr.length){
+                    if(arr[j]<arr[k]){
+                        tmp = arr[j];
+                        arr[j] = arr[k];
+                        arr[k] = tmp;
+                    }
+                    k++;
+                }
+                j++;
+            }
+            return arr;
+        }
+        document.getElementsByClassName("demo1")[0].innerHTML = f1(arr);
+        var max;
+        function f2(arr){
+            for(var i = 0;i<arr.length;i++){
+                for(var j=i+1;j<arr.length;j++){
+                    if(arr[i]>arr[j]){
+                        max = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = max;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        document.getElementsByClassName("demo1")[1].innerHTML = f2(arr);
+       */  
+        ////////////search array from prime number///////////////////
+        
+        
+        
+       
+    ///palindrome/////        
+        
+/*         function f3(num){
+            var l = num.length;
+            flag= true;
+            var count = 0;
+            for(var i=0;i<l;i++){
+                if(num[i]!==num[l-1-i]){
+                    flag = false;
+                }
+            }
+            if(flag==false){
+                document.write(`${num} is not palindrome`);
+            }
+            else{
+                document.write(`${num} is palindrome`);
+            }
+        }
+        num = prompt("enter the value");
+    f3(num)
+    
+
+ */
+        ///////////////Reverse a string///////
+     /*    function f4(str){
+            
+            newstr =" ";
+
+            for(var i = str.length-1; i>=0;i--){
+                newstr = newstr + str[i];
+            }
+            document.write(newstr);
+        }
+        str = prompt("enter the string");
+        f4(str); */
+
+
+        /* for(var i = 2;i<num;i++){
+            if(num%i==0){
+                count = count +1;
+            }
+        }
+        if(count ==1){
+            document.write(`${num} is not prime`);
+        }else{
+            document.write(`${num} is prime`);
+        } */
+
+
+        /* function f1(arr){
+            for(var j=0;j<arr.length;j++){
+                for(var k=j+1;k<arr.length;k++){
+                    if(arr[j]<arr[k]){
+                        tmp = arr[j];
+                        arr[j] = arr[k];
+                        arr[k] = tmp;
+                    }
+                }
+            }
+            return arr;
+        }
+        document.write(f1(arr)); */
+        
+        
+        
+        ////////take input from user and get decending and assending order 
+
+        /* var arr = new Array();
+        var tmp;
+        for(var i = 0;i<5;i++){
+            arr[i] = parseInt(prompt("enter the value"));
+        }
+        for(var j=0;j<arr.length;j++){
+            for(var k=j+1;k<arr.length;k++){
+                if(arr[j]>arr[k]){
+                    tmp = arr[j];
+                    arr[j] = arr[k];
+                    arr[k] = tmp;
+                }
+            }
+        }
+        document.write(arr); */
+
+
+
+
+
+    //////////////take input from user and store in an array and perform sum functionn////////////
+    /*     var arr = new Array();
+        var i = 0;
+        do{
+            arr[i]= parseInt(prompt("enter the number"));
+            i++
+        }while(i<5)
+        document.getElementById("demo1").innerHTML = `The sum of ${arr} is : `
+        var sum = 0;
+        function f1(arr){
+        var j = 0;        
+        while(j<arr.length){
+            sum = sum+arr[j]
+            j++
+        }
+        return sum;
+    }
+    document.getElementsByClassName("demo")[0].innerHTML = f1(arr); */
+
+        /* var arr=new Array();
+        for(var i = 0;i<5;i++){
+            arr[i] = parseInt(prompt("enter the value"));
+        }
+        document.write(arr+"<br>")
+        function f1(arr){
+            var sum = 0;
+            for(var i = 0; i<arr.length;i++){
+                sum = sum+arr[i];
+            }
+            return sum;
+        }
+        document.write(f1(arr));
+         */
+
+        /* var l = prompt("enter the number.");
+        var a =l;-
+        var rem;
+        var res = 0;
+        while(l>0){
+            rem = l%10;
+            res=(res*10)+rem;
+            l = parseInt(l/10);
+        }
+        if(a==res){
+            document.write(a+" it is a palindrome");
+        }else{
+            document.write(a+" it is not a palindrome");
+        } */
+
+        ////////////////////////palindrome///////////////////
+
+        /*  function palin(x){
+            var l = x.length;
+            var flag=true;
+            for(var i = 0; i<l;i++){
+                if(x[i] !== x[l-1-i]){
+                    flag = false;
+                }
+                
+            }
+            if(flag == false){
+                document.write(`${x} it is not a palindrome`);
+            }
+            else{
+                document.write(`${x} it is a palindrome`)
+            }
+        }
+        var x = prompt("enter the string or number");
+        palin(x); 
+        
+         */
+
+
+         /* function validatePalin(str) {  
+  
+  // get the total length of the words  
+  const len = string.length;  
+
+  // Use for loop to divide the words into 2 half  
+  for (let i = 0; i < len / 2; i++) {  
+
+      // validate the first and last characters are same  
+      if (string[i] !== string[len - 1 - i]) {  
+          alert( 'It is not a palindrome');  
+      }  
+  }  
+  alert( 'It is a palindrome');  
+}  
+
+// accept the string or number from the prompt  
+const string = prompt('Enter a string or number: ');  
+
+const value = validatePalin(string);  
+
+console.log(value); */
+    </script> 
+</body>
+</html>

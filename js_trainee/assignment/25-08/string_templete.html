@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string templete</title>
+</head>
+<body>
+    <div>
+    <h1>Templete String</h1>
+    <p>Templete string is known as Templete Literals. Templete literals is a literal with delimited with backticks.
+    allow embended express called substitutions.
+    Templete string is modern powerful feature of ES6.
+    synonyms word:  Templete literals
+                    Templete string
+                    String Templete
+                    Back-tick Syntax
+      it allow multiline string
+    <bold>interpolation</bold>: it provide easy way to interpolate the variable and expression:
+            by ${....}
+            it allow variable, expression and html tags both
+            <p id="demo"></p>
+    </p>              
+    <script>
+        var a = 10;
+        var b = 20;
+        document.write(`the sum of ${a} and ${b} is ${a+b}<br>`);
+        var msg= `this this is templete string \n\
+         this is templete literal \n\
+          string templete \n\ back-tick syntax`;
+        //console.log(msg);
+        document.getElementById("demo").innerHTML = msg;
+    </script>
+</div>
+</body>
+</html>

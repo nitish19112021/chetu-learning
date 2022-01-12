@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>set method</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            eno :101,
+            ename:"nitish"
+        }
+        var s = new Set([10,0,20,13,20,obj])
+        for(x of s){
+            console.log(x);
+            
+        }
+        console.log(s.has(10));
+        s.add(100);
+        console.log(s)
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        //var s = new Set([101,102,103,104,'Nitish']);
+        //s.forEach((res)=>{console.log(res)})
+        /* var s = new Set();
+        s.add(101);
+        s.add(102);
+        s.add('Nitish');
+        s.add(102)
+        const key = 104
+        s.add(key) */
+       // console.log(s);
+        //console.log(s.size);
+        //console.log(s.entries())
+        /* for(d of s.entries()){
+            console.log(d)
+        } */
+        
+        //s.forEach(res=> console.log(res))
+
+        /* s.forEach((result)=>{console.log(result)})
+        console.log(s.delete(102));
+
+        console.log(s);
+        s.forEach((result)=>{console.log(result)})
+        if(s.has(s>50)){
+            document.write("found")
+        }else
+        {
+            document.write("not found")
+        } */
+
+        /* var m = new Map([['eno',101],['eno1',102],[103,'nitish']]);
+        
+        m.set(104,"sumit");
+        m.delete(104);
+        m.forEach((key,value)=>{console.log(value+" " +key)})
+        console.log(m.size);
+        if(m.has(103)){
+            document.write("found");
+        }
+        else{
+            document.write("not found");
+        } */
+       /*  var arr = [1,2,3,4,5,6,7,8,9]; */
+
+        /* document.write(arr.reduce(process));
+        function process(total, num){
+            total += num;
+            return total;
+        } *//* 
+        document.write(arr.reduce((total,num) => {return total+=num;}))
+        console.log(arr.some(num=> num>5)) */
+            </script>
+</body>
+</html>

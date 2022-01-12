@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <p id="demo"></p>
+    <input type="button" value="click" onclick="f1()">
+    <script>
+        function f1(){
+        fetch("demo.json").then((res)=>{return res.text();}).then((result)=>{
+            var disp = JSON.parse(result);
+            var data= "<table border='1' align='center'>";
+            data+=`<thead><th>id</th><th>name</th><th>username</th><th>email</th><th>address</th><th>phone</th><th>website</th><th>company</th></thead>`
+            for(x in disp){
+                data+=`<tr><td>${disp[x].id}</td><td>${disp[x].name}</td><td>${disp[x].username}</td><td>${disp[x].email}</td><td><ol><li>${disp[x].address.street}</li><li>${disp[x].address.suite}</li><li>${disp[x].address.city}</li><li>${disp[x].address.zipcode}</li><li><ul><li>${disp[x].address.street.geo}</li><li>${disp[x].address.street.geo}</li></ul></li></ol></td><td>${disp[x].phone}</td><td>${disp[x].website}</td><td><ol><li>${disp[x].company.name}</li><li>${disp[x].company.catchPhrase}</li><li>${disp[x].company.bs}</li></ol></td></tr>`
+            }
+            data+="</table>"
+            document.getElementById("demo").innerHTML = data
+        })
+        }
+    </script>
+</body>
+</html>

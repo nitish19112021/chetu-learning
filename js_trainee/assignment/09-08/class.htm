@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+<body>
+    <form>
+        <input type="button" value="class_dec" onclick="myfn()" ondblclick="myfn1()">
+        <input type="button" value="class_exp" onclick="myfn2()" ondblclick="myfn3()">
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+        <p id="demo3"></p>
+        <p id="demo4"></p>
+        <p id="demo5"></p>
+        <p id="demo6"></p>
+        <p id="demo7"></p>
+        <p id="demo8"></p>
+        <p id="demo9"></p>
+        <script>
+            ///////////////////class declaration with static value////////
+            class employee{
+                eno = 101;
+                ename = "amit";
+                esal = 111111;
+                info = function (){
+                    return this.eno +" "+this.ename +" " + this.esal;
+                }
+            }
+            function myfn(){
+                var emp = new employee();
+                var para1 = document.getElementById("demo1");
+                para1.innerHTML = "First : class declaration" + emp.eno +" "+ emp.ename+" "+emp.esal;
+                var para2 = document.getElementById("demo2");
+                para2.innerHTML = "second : class declaration add behaviour " +emp.info();
+            }
+        ///////////////////by class declaration through constructor
+        class employee1{
+            constructor(eno,ename,esal){
+                this.eno = eno;
+                this.ename = ename;
+                this.esal = esal;
+                this.info = function (){
+                    return this.eno + " " + this.ename + " " + this.esal;
+                }
+            }
+        }            
+        function myfn1(){
+            var emp = new employee1(102, "sumit", 222222);
+            var para3 = document.getElementById("demo3");
+            para3.innerHTML = "First : dynamic value " + emp.eno + " " +emp.ename + " "+emp.esal;
+            var para4 = document.getElementById("demo4");
+            para4.innerHTML = "second : dynamic behaviour"  + emp.info();
+        }
+    //////////////// class expression .////////////////////
+    var e = class employee2{
+                eno = 103;
+                ename = "Nitish";
+                esal = 33333333;
+                info = function (){
+                    return this.eno +" "+this.ename +" " + this.esal;
+                }
+            }
+            function myfn2(){
+                var emp = new e();
+                var para1 = document.getElementById("demo1");
+                para1.innerHTML = "First : class declaration" + emp.eno +" "+ emp.ename+" "+emp.esal;
+                var para2 = document.getElementById("demo2");
+                para2.innerHTML = "second : class declaration add behaviour " +emp.info();
+            }
+
+            var e1 =  class employee3{
+            constructor(eno,ename,esal){
+                this.eno = eno;
+                this.ename = ename;
+                this.esal = esal;
+                this.info = function (){
+                    return this.eno + " " + this.ename + " " + this.esal;
+                }
+            }
+        }            
+        function myfn3(){
+            var emp = new e1(104, "ankit", 4444444);
+            var para3 = document.getElementById("demo3");
+            para3.innerHTML = "First : dynamic value " + emp.eno + " " +emp.ename + " "+emp.esal;
+            var para4 = document.getElementById("demo4");
+            para4.innerHTML = "second : dynamic behaviour"  + emp.info();
+        }
+        
+        </script>
+    </form>
+</body>
+</html>

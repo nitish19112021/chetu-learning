@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <input type="button" value="click" onclick="f1()">
+    <script>
+        function f1(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState==4 && this.status==200){
+                var result = JSON.parse(this.responseText);
+                var data = "<table border='1'>";
+                    data+=`<thead><th>id</th><th>name</th><th>username</th><th>email</th><th>address</th><th>phone</th><th>website</th><th>company</th></thead>`
+                    for(x in result){
+                        data+=`<tr><td>${result[x].id}</td><td>${result[x].name}</td><td>${result[x].username}</td><td>${result[x].email}</td><td><ol><li>${result[x].address.street}</li><li>${result[x].address.suite}</li><li>${result[x].address.city}</li><li>${result[x].address.zipcode}</li><li><ul><li>${result[x].address.geo.lat}</li><li>${result[x].address.geo.lng}</li></ul></li></ol></td><td>${result[x].phone}</td><td>${result[x].website}</td><td><ol><li>${result[x].company.name}</li><li>${result[x].company.catchPhrase}</li><li>${result[x].company.bs}</li></ol></td></tr>`
+                    }
+
+                    data+="</table>"
+
+                    document.getElementById("demo").innerHTML = data;
+            }
+        }
+        //xhttp.open("GET","https://jsonplaceholder.typicode.com/users",true);
+        xhttp.open("GET","demo.json",true);
+        xhttp.send();
+    }
+    </script>
+</body>
+</html>

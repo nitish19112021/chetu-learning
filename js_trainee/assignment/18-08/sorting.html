@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sorting</title>
+</head>
+<body>
+    <input type="button" value="click" onclick="f1()">
+    <script>
+/* 
+        function f1(){
+            str = "this is a my car which is so good."
+            l = str.length;
+            
+                var vowel=0;
+                for(var j=0;j<l;j++){
+                    var c = str.charAt(j);
+                    if(c=="a"|| c=="e"||c=="i"||c=="o"||c=="u"){
+                        vowel = vowel+1;
+                    }
+            
+        }
+        document.write("vowel : "+vowel)
+        } */
+
+        function f1(){
+            var str = "this is a car of a popular company";
+            var l = str.length;
+            //document.write(l)
+            var vow = 0;
+            
+            for(var i=0; i<l;i++){
+                if(str.charAt(i)=="a"||str.charAt(i)=="e"||str.charAt(i)=="i"||str.charAt(i)=="o"||str.charAt(i)=="u"){
+                    vow = vow+1;
+                }
+
+            }
+            document.write("vowels are "+vow);
+        }
+        /* function f1(){
+            var str = "This is the My MERN class";
+            var l = str.length;
+            document.write(l);
+            var cap = 0;
+            var small = 0;
+            for(var i=0;i<l;i++){
+                if(str.charAt(i)>="A" && str.charAt(i)<="Z"){
+                    cap = cap+1;
+                }
+                else{
+                    small = small+1;
+                }
+            }
+            document.write("capital letter : "+cap +"small letter is : "+small);
+        } */
+        //// even and odd ////////
+        /* function f1(){
+        arr = [5,7,6,5,8,6,9,7,1,2,55,45,4,5];
+        l = arr.length;
+        document.write(l)
+        var even=0;
+        var odd=0;
+        for(var i=0; i<l;i++){
+            if(arr[i]%2 == 0){
+                even=even+1;
+            }
+            else{
+                odd=odd+1;
+            }
+        }
+        document.write("even is : "+even+" odd is : "+odd);
+    } */
+    </script>
+</body>
+</html>

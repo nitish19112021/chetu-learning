@@ -1,0 +1,36 @@
+<html>
+  <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></head>
+  <body>
+    <div style="border: 2px solid black; background-color: lightgray; width: 600px; margin: auto;">
+    <h2 style="text-align: center;">Signup Here: <a href="signup">SignUp</a></h2>
+    <h2 style="text-align: center">Admin Panel : <a href="admin">Admin Panel</a></h2>
+    <hr style="width: 590px;">
+    <!-- <form action="welcomelogin" method="POST">
+      <input type="text" name="username" placeholder="Enter username"><br><br>
+      <input type="text" name="userpass" placeholder="Enter password"><br><br>
+      <input type="submit" value="Login">
+    </form> -->
+
+
+    <form class="form-horizontal" action="welcomelogin" method="POST" style="width: 500px; margin: auto;">
+      <div class="form-group">
+        <label class="control-label col-sm-2">User&nbsp;Name:</label>
+        <div class="col-sm-8">
+          <input type="text" name="username" placeholder="Enter Username" class="form-control">          
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Password:</label>
+        <div class="col-sm-8">
+          <input type="password" name="userpass" placeholder="Enter password" class="form-control">          
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-3">          
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </body>
+</html>

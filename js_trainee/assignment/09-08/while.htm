@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while</title>
+</head>
+<body>
+    <form>
+        <input type="button" value="click" onclick="myfn()">
+  </form>
+  <p id="demo"></p>
+  <script>
+
+    function myfn(){
+        var high = 0;
+        var num = 0;
+        var i = 0;
+        while(i<5);{
+            num = parseInt(prompt("enter the number"));
+            if(num>high)
+            high = num;
+            i =i+1;
+        }
+        document.write(high);
+        document.write("<br>");
+    }
+    /* function myfn()  {
+        var even = 0;
+        var odd= 0;
+        var num = 0;
+        var i = 0;
+        while(i<5){
+            num = parseInt(prompt("enter number"))
+            if(num%2 == 0){
+                even = even+1;
+            }
+            else{
+                odd = odd+1;
+            }
+
+            i = i+1;
+
+        }
+        document.write("even is" +even + "odd is" + odd);
+    } */
+     /* function myfn(){
+        var sum = 0;
+        var num = 0; 
+        var i =0;
+         
+     while(i<5){
+            num = parseInt(prompt("enter any number"));
+            sum = sum + num;
+            
+            i = i+1;
+         
+        }
+        var para = document.getElementById("demo");
+         para.innerHTML = "sum is " + sum;
+         
+     } 
+     
+ */  </script>
+</body>
+</html>

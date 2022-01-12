@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h3>All record are:</h3>
+        <table border="1">
+            <thead><th>id</th><th>username</th><th>password</th></thead>
+            <% data.forEach((res)=>{ %>
+                <tr>
+                    <td><%=res.id%></td>
+                    <td><%=res.username%></td>
+                    <td><%=res.password%></td>
+                </tr>
+            <% })%>
+            
+        </table>
+            <a href="/">Home</a>
+    </body>
+</html>

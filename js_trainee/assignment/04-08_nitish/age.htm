@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>age</title>
+    <style>
+        div{
+          text-align:  center;  
+        }
+        form{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- <p>dddddddddd</p> -->
+    <div>
+        <p>ssssssssss</p>
+    <img src="two.png" alt="image">
+    
+</div>
+<form>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <select>
+        <option value="+">+</option>
+    </select>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <form>
+        <input type="text" id="num1" placeholder="enter your age"><br><br>
+        <!-- <input type="button" id="click1" value="click"> -->
+        <button id="btn" >click</button>
+        <p id="result"></p>
+    </form>
+    <script>
+        function myfun(){
+        msg = "";
+            var a = parseInt(document.getElementById("num1").value);
+            
+
+            if(a>=18){
+                msg = "you are eligible " +a;
+                document.getElementById("result").innerHTML = msg;
+            }
+            else{
+                document.getElementById("result").innerHTML = "you are not eligible " +a;
+            }
+   
+
+        }
+        document.getElementById("btn").addEventListener("click", function() {
+            function myfun(){
+        msg = "";
+            var a = parseInt(document.getElementById("num1").value);
+            
+
+            if(a>=18){
+                msg = "you are eligible " +a;
+                document.getElementById("result").innerHTML = msg;
+            }
+            else{
+                document.getElementById("result").innerHTML = "you are not eligible " +a;
+            }
+            
+
+        }
+   myfun();
+});
+    </script>
+</body>
+</html>

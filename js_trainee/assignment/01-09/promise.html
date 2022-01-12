@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+<body>
+    
+    <!-- ////// Single promise 
+        <script> 
+        var prom = new Promise(function(resolve,reject){
+            if(""){
+                resolve("hello javascript");
+            }
+            else{
+                reject("hello Node.js")
+            }
+        });
+        prom.then((result)=>{
+            console.log(`Result is : ${result}`);
+        }).catch((error)=>{
+            console.log(`Error is : ${error}`);
+        })
+    </script> -->
+
+    
+<!--///// Multiple promise 
+    <script>
+        var p1 = new Promise((resolve,reject)=>{
+            console.log("this is promise 1")
+            resolve("promise1");                       
+        })
+        var p2 = new Promise((resolve,reject)=>{
+            console.log("this is promise 2");
+            resolve("promise 2");
+        })
+        Promise.all([p1,p2]).then((result)=>{
+            console.log(`result ${result}`)
+        }).catch((error)=>{
+            console.log(error)
+        });
+    </script>  -->
+    <script>
+        //////// promise.all([]) run when all promise condition true
+        var p1 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("this is promise 1");
+                resolve("promise 1")
+            },1000)
+            
+        });
+        var p2 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                if(true){
+                console.log("this is promise 2");
+                resolve("promise 2")
+            }
+            else{
+                reject("error")
+            }
+            },2000)
+            
+        });
+        var p3 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("this is promise 3");
+                resolve("promise 3")
+            },3000)
+            
+        });
+
+        Promise.all([p1,p2,p3]).then(result=>{
+            console.log(result);
+        }).catch((error)=>{
+            console.log(error);
+        });
+    </script>
+</body>
+</html>

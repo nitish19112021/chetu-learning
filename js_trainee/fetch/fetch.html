@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <p id="demo"></p>
+    <input type="button" value="click" onclick="f1()">
+<script>
+    function f1(){
+        /* var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        }
+        xhttp.open('GET','demo.txt',true);
+        xhttp.send() */
+
+        fetch('http://localhost:9999').then((res)=>{
+            return res.text();
+        }).then((result)=>{            
+            document.getElementById('demo').innerHTML = result;
+        })    
+    } 
+</script>
+</body>
+</html>

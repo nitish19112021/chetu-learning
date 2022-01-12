@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number_sorting</title>
+</head>
+<body>
+    <input type="button" value="click" onclick="f1()"><br>
+    <script>
+    /* function f1(){
+        for(var i=0;i<5;i++){
+            for(var j=0; j<5;j++){
+                document.write("*");
+            }
+            document.write("<br>")
+        }
+    } */
+        /* output:  *****
+                    *****
+                    *****
+                    *****
+                    *****   */
+/*        function f1(){
+            for(var i=0;i<5;i++){
+                for(var j=0;j<=i;j++){
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+            
+        }
+
+          output:   *
+                    **
+                    ***
+                    ****
+                    *****
+ */
+   /*     function f1(){
+            for(var i=0;i<5;i++){
+                for(var j=i;j<5;j++){
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+        }
+       output is:   *****
+                    ****
+                    ***
+                    **
+                    *       */
+        /* function f1(){
+            var k =5;
+            for(var i=0;i<=5;i++){
+                for(var j=0;j<=5;j++){
+                    if(j<k){
+                        document.write("_")
+                    }
+                    else{
+                        document.write("*");
+                    }
+                }
+                document.write("<br>");
+                k--;
+            }
+        } */
+    </script>
+    
+    <!-- Number sorting : Accending order -->
+    <!--  <script>
+        function f1(){
+            arr = [25,45,7,56,57,5,98,65,23];
+            l=arr.length;
+            for(var i=0;i<l;i++){
+                for(var j=i+1;j<l;j++){
+                    if(arr[i]>arr[j]){
+                        txt = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = txt;
+                    }
+                }
+            }
+            document.write(arr);
+        }
+    </script> -->
+    <!-- Number sorting : Decending order -->
+    <!-- <script>
+        function f1(){
+        arr = [2,5,4,3,2,1,4,7,23,54,7];
+        l = arr.length;
+        for(var i=0;i<l;i++){
+            for(var j=i+1;j<l;j++){
+               
+            if(arr[i] < arr[j]){
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+
+    document.write(arr);
+    
+}
+    </script> -->
+    
+</body>
+</html>

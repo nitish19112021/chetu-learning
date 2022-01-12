@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle</title>
+</head>
+<body>
+
+    <button id="btn" onclick="myfun()">signup</button>
+<p id="demo1"></p>
+<script>
+   msg = true;//global variable
+    function myfun(){
+        var demo = "<input type='text' placeholder='enter value 1'><br><br><input type='text'><br><br><input type='button' value='login'>";   
+        var res = document.getElementById("demo1");
+        // var msg =true; //local variable
+        if(msg == true){
+        res.innerHTML = demo;
+        msg = false;
+        }
+        else{
+            res.innerHTML = " ";
+            msg=true;
+        }
+    }
+
+</script>
+</body>
+</html>

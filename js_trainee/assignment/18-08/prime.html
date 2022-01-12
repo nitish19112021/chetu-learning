@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prime number</title>
+</head>
+<body>
+    
+    <input type="button" value="click" onclick="f1()">
+    <script>
+        str = "hi this is the nitish working for chetu And I am Dump";
+        l = str.length;
+        
+        cap=0;
+        smal=0;
+        var vow=0;
+        for(var i=0; i<l; i++){
+            var c = str.charAt(i);
+            if(c>="A"&& c<="Z"){
+                cap = cap+1;
+            }
+            else{
+                smal= smal+1
+            }
+        }
+        for(var j=0;j<=l;j++){
+            var c=str.charAt(j);
+            if(c=="a"||c=="e"||c=="i"||c=="o"||c=="u"){
+                vow=vow+1;
+            }
+        }
+        function f1(){
+            document.write("capital letter are : "+cap+" Small letter are : "+smal+"<br>");
+            document.write("vowel are : " +vow);
+
+        }
+    </script>
+    <!-- <script>
+        function f1(){
+        var k = 5;
+        for(var i=0;i<5;i++){
+            for(var j=0;j<=5;j++){
+                if(j<k){
+                    document.write("&nbsp;&nbsp;");
+                }
+                else{
+                    document.write("*")
+                }
+
+            }
+            k--;
+            document.write("<br>")
+        }
+        }
+    </script> -->
+
+    <!-- <script>
+        
+            var arr = [2,5,4,3,7,5,4,56,5,7,5,4,55,6,6];
+            var l = arr.length;
+            for(var i = 0; i<l;i++){
+                for(var j = i+1; j<l;j++){
+                    if(arr[i]<arr[j]){
+                        tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                }
+            }
+        function f1(){    
+            document.write(arr);
+        }
+    </script> -->
+        
+    
+    <!-- <script>
+            function f1(){
+              var num = parseInt(document.getElementById("demo")).value;   
+              if(num/num == 1)   {
+                  document.write("prime number")
+              }
+              else{
+                  document.write("not prime");
+              }
+        }           
+        </script> -->
+
+</body>
+</html>

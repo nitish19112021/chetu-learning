@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+<body>
+    <input type="button" value="check" onclick="f1()">
+    <script>
+        function f1(){
+            class test{
+                static demo(){
+                    document.write("this is non static 1")
+                }
+                demo1(){
+                    //let a=new test()
+                    test.demo()
+                    document.write("this is non static 2");
+                }
+            }
+            
+            new test().demo1();
+        }
+    </script>
+</body>
+</html>

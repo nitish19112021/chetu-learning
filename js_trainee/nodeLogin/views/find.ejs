@@ -1,0 +1,21 @@
+<html>
+    <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></head>
+    <body>
+        <div style="text-align: center;" >
+        <h1>List Of all Records: </h1>
+        <hr >
+            <table border="1" style="text-align: center; margin: auto;">
+                <thead><th>id</th><th>Emp Name</th><th>Emp Dept</th></thead>
+                <% data.forEach((res)=>{ %>
+                     <tr>
+                         <td><%=res.id %></td>
+                         <td><%=res.username %></td>
+                         <td><%=res.userdept %></td>
+                     </tr>   
+                <% }) %>
+                
+            </table>
+            <h1><a href="/">Home</a></h1>
+        </div>
+    </body>
+</html>

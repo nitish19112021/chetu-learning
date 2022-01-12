@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <script>
+        function add() {
+            var first = document.myform1.num1.value;
+            var second = document.myform1.num2.value;
+            var result = parseInt(first) + parseInt(second);
+            document.myform1.num3.value = result;
+        }
+        function subtract() {
+            var first = document.myform1.num1.value;
+            var second = document.myform1.num2.value;
+            var result = parseInt(first) - parseInt(second);
+            document.myform1.num3.value = result;
+        }
+        function multi() {
+            var first = document.myform1.num1.value;
+            var second = document.myform1.num2.value;
+            var result = parseInt(first) * parseInt(second);
+            document.myform1.num3.value = result;
+        }
+        function square() {
+            var first = document.myform2.num1.value;
+            var result = first * first;
+            document.myform2.num2.value = result;
+        }
+        function cube() {
+            var first = document.myform2.num1.value;
+            var result = first * first * first;
+            document.myform2.num2.value = result;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="myform1">
+        <input type="text" name="num1" placeholder="Enter the first number" />
+        <input type="text" name="num2" placeholder="Enter the second number" />
+        <input type="text" name="num3" placeholder="Result" /><br />
+        <input type="button" value="Addition" onclick="add()">
+        <input type="button" value="Subtraction" onclick="subtract()">
+        <input type="button" value="Multiplication" onclick="multi()"><br /><br />
+        <input type="button" value="Square" onclick="square()">
+        <input type="button" value="Cube" onclick="cube()">
+    </form>
+    <!-- <form name="myform2">
+        <input type="text" name="num1" placeholder="Enter the number" />
+        <input type="text" name="num2" placeholder="Result" /><br />
+        <input type="button" value="Square" onclick="square()">
+        <input type="button" value="Cube" onclick="cube()">
+    </form> -->
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+    <input type="button" value="click" onclick="f1()">
+        <script>
+        function f1(){
+            class test{
+                demo1(){
+                    document.write("non-static method<br>");
+                }
+                static demo2(){
+                    var a = new test();
+                    a.demo1();
+                    //new test().demo1()
+                    document.write("static method");
+                }
+            }
+            test.demo2();
+        }
+
+        
+        /* ///// In a single class call static method in non-static method by using (class name)
+        function f1(){
+            class test{
+                static demo1(){
+                    document.write("static method<br>");
+                }
+                demo2(){
+                    test.demo1()
+                    document.write("non-static method");
+                }
+            }
+            new test().demo2();
+        } */
+        
+        /* 
+        ///////// In a single class non static method can be access in non static method by using
+        //////(this and by using object )
+        function f1(){
+            class test{
+                demo1(){
+                    document.write("non static 1");
+                }
+                demo2(){
+                    var a = new test();
+                    a.demo1();
+                    //this.demo1()
+                    document.write("non-static 2");
+                }
+            }
+            var obj = new test();
+            obj.demo2();
+        } */
+        
+         /* function f1()
+        {   
+            /////In a single class static method can be access into static method by using  (this keyword or class name) //////
+            class test{
+                static demo1(){
+                    return "I am static<br>";
+                }
+                static demo2(){
+                    
+                    document.write(test.demo1());
+                    //document.write(test.demo1());
+                    return "I am non-static"
+                }
+            }
+
+            document.write(test.demo2());
+        }    */  
+            //non static to static //// access by anonymous object or object through object by var keyword
+            /* class test{
+                demo1(){
+                    document.write("non static");
+                }
+                static demo2(){
+                    var x = new test();
+                    x.demo1();
+                    document.write("static method");
+                }
+            }
+            obj = new test();
+            test.demo2(); */
+            
+        
+            
+
+        </script>
+    
+    
+    <!-- <script>
+     function f1(){
+        class Parent{
+            demo(){
+                return "parent<br>"
+            }
+        }
+        class Child extends Parent{
+            
+            
+            demo1(){
+                //var a = new Parent();
+                //a.demo();
+                var a = this.demo();
+                document.write(a);
+                return "child"
+            }
+        }
+        obj = new Child();
+        document.write(obj.demo1());
+    } -->
+    </script>
+</body>
+</html>

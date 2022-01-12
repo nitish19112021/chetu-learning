@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>plus</title>
+        <script>
+           function myfun(){ 
+            var num1 = document.myform.first.value;
+            var num2 = document.myform.second.value;
+            var num3 = parseInt(num1) + parseInt(num2);
+            document.myform.result.value = num3;
+           }
+           
+        </script>
+    </head>
+    <body>
+        <form name="myform">
+            <span>Num 1: </span><input type="text" name="first" placeholder="Enter the first Number"/><br><br>
+            <span>Num 2: </span><input type="text" name="second" placeholder="Enter the second Number"/><br><br>
+            <span>Result: </span><input type="text" name="result" placeholder="result"><br><br>
+            <input type="button" value="add" onclick="myfun()">
+        </form>
+        
+    </body>
+</html>

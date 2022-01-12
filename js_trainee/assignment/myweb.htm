@@ -1,0 +1,124 @@
+<html>
+    <title>test</title>
+    <head>
+        
+    </head>
+    <body>
+        <!--<button onclick="count()">click me</button>-->
+        <br>
+        <br>
+        <p id="demo"></p>
+        <p id="demo2"></p>
+        <button onclick="myfun()">check f1</button>
+        <button onclick="myfun1()">check f2</button>
+        <script>
+            const arr = ["apple", "mango", "orange", "banana", "kiwi", "papaya", "guvava"]
+             function myfun(){
+               for(let i = 0; i<arr.length; i++){
+                  document.write(arr[i]+"<br>")
+                }
+            }
+            function myfun1(){
+                    let text ="";                
+                    for(let i = 0; i<arr.length; i++){
+                    text += "this is array " + arr[i] + "<br>";
+                    document.getElementById("demo").innerHTML = text;
+                
+                }
+            }
+
+        //console.log(a);
+           /*  function foo(b){
+                let a = 10;
+                return a+b+11;
+            }
+
+            function bar(x){
+                let y = 3;
+                return foo(x*y);
+            }
+            console.log(bar(7));
+             */
+            /* let str = "Apple, Banana, Kiwi, Apple";
+document.getElementById("demo").innerHTML = str.toUpperCase(7,11);
+
+ */
+            /* const a = ["Banana", "Orange", "Apple", "Mango"];
+            const l = a.length;
+            for(i = 0; i <= l; i++){
+            a.push("Graps")
+            document.write(a+"<br>");
+            } */
+            /* const a = [];
+            a[0] = "nit";
+            a[1] = "mah";
+            a[5] = "ank"
+
+            var l = a.length;
+            document.write(l)
+            for(let i = 0; i <= l; i++){
+                document.write(a[i]+"<br>");
+            } */ 
+            /* var a = ["nit", "mahes", "ank"];
+            document.getElementById('demo1').innerHTML = a;
+            var x = a.length;
+            document.write(x);
+            function count(){
+                a[a.length] = "kkl";
+                
+                document.getElementById('demo1').innerHTML = a;
+            } */
+
+            
+            //var a = new Array("10", "1", "2", "8", "3");
+
+            /* const stud = ["nitish", "ram", "mahesh", "sumit", "keshew"];
+            let l = stud.length;
+            //document.write(l);
+            for(let i = 0; i < l; i++){
+                document.write(stud[i]+"<br>");
+            }
+            stud.pop();
+            document.write(stud)
+             *//* function add(){
+                var a = 4;
+                var b = 7;
+                console.log(a+b);
+            }
+            add(); */
+
+          /*   const myadd = (a,b) => {
+                console.log(a+b);
+            }
+ */
+            /* var month = a.getUTCMonth() + 1; 
+            var year = a.getUTCFullYear();
+            var day = a.getDay();
+
+            document.write(year + " "+ month + " " + day) */
+            // var d = a.getTime();
+/*             var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+
+           document.write(hour +" " + min + " "+sec);
+            *//* 
+            var T = d.toLocaleTimeString();
+            document.write(T); */
+
+            /* var setInter = setInterval(clockTime, 1000);
+           function clockTime(){
+               var d = new Date();
+                var T = d.toLocaleTimeString();
+                // document.write(T)            
+                document.getElementById("demo1").innerHTML = T;
+
+
+            }
+            clockTime();
+ */            
+        </script>
+        
+    </body>
+</html>        
+            

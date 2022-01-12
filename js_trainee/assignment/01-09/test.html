@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        //////////check palindrome of a number
+        var num = prompt("enter the number or string to check palindrome");
+        var l = num.length;
+        
+        flag = true;
+        for(var i = 0; i<num.length; i++){
+            if(num[i]!==num[l-1-i]){
+                flag=false;
+            }
+         }
+         if(flag==false){
+             document.write(`${num} is not palindrome`);
+         }
+         else{
+             document.write(`${num} is palindrome`);
+         }
+    </script> -->
+    <script>
+        ///////// fibonacci series
+        /* var a = 0;
+        var b = 1;
+        var tmp;
+        for(var i=0;i<10;i++){
+            tmp = a+b;
+            a = b;
+            b = tmp;
+            
+            document.write(tmp+"<br>");
+        }  */
+        
+         /* var num = parseInt(prompt("enter the number to check fibonacci series"));        
+        var l = num;
+        var b=1;
+        var tmp;
+        for(var i=0;i<l;i++){////// i<5    i<1
+            tmp = num+b;    //  tmp = 5+1 = 6
+            num = b;        //      num = 1;
+            b = tmp;        //      b= 6
+            document.write(tmp+"<br>")
+        }  */
+       /////  factorial     
+       
+        /////////54321
+/*         const number = parseInt(prompt('Enter a positive integer: '));
+
+        var fact = 1;
+        for(var i = 1; i<=number;i++){
+            var fact = fact * i
+        
+        }
+
+        document.write(`${number} factorial is ${fact}`);
+        var num = 5;
+        for(var i=1;i<=10;i++){
+
+            document.write(`${num} * ${i} = ${num*i}<br>`);
+        } */
+
+        /* function triangle(a,b){
+            return (a+b)/2
+        }
+        document.write(triangle(3,4)+"<br>");
+
+        function cube(a){
+            return a*a*a;
+        }
+        document.write(cube(4))
+         */
+
+         // program to find the LCM of two integers
+
+/* // take input
+const num1 = prompt('Enter a first positive integer: ');
+const num2 = prompt('Enter a second positive integer: ');
+
+// higher number among number1 and number2 is stored in min
+let min = (num1 > num2) ? num1 : num2;
+
+// while loop
+while (true) {
+    if (min % num1 == 0 && min % num2 == 0) {
+        console.log(`The LCM of ${num1} and ${num2} is ${min}`);
+        break;
+    }
+    min++;
+}
+
+
+ */
+
+ ////////// print noida
+/* var arr = "noida"
+    for(var i = 0; i<arr.length;i++){
+        for(var j=0; j<=i;j++)
+        {
+            document.write(arr[j])
+        }
+        document.write("<br>")
+    } */
+
+/* for(var i = 0; i<5;i++){
+    for(var j=0;j<=i;j++){
+        document.write("*");
+    }
+    document.write("<br>")
+} */
+
+/* for(var i = 0; i<5;i++){
+    for(var j = 5; j>i; j--){
+        document.write("*");
+    }
+    document.write("<br>")
+} */
+
+/* var k = 5;
+for(var i = 0; i<=5;i++){
+    for(var j = 0;j<=5;j++){
+        if(j<k){
+            document.write("&nbsp;");
+        }       
+        else{
+            document.write("*")
+        }
+        
+    }
+    k--
+    document.write("<br>")
+} */
+
+/* var arr = new Array();
+arr[0] = [1,2,3];
+arr[1] = [4,5,6];
+arr[2] = [7,8,9]
+
+for(var i=0;i<arr.length;i++){
+    for(var j = 0;j<arr.length;j++){
+        document.write(arr[i][j])
+    }
+    document.write("<br>")
+}  */
+/* var arr = new Array();
+arr[0] = [1,2,3];
+arr[1] = [4,5,6,7,8];
+arr[2] = [9,10,11,12,13,14];
+arr[3] = [15,16,17];
+
+for(var i=0;i<arr.length;i++){
+    for(var j=0;j<arr[i].length;j++){
+        document.write(arr[i][j]+" ");
+    }
+    document.write("<br>")
+}
+ */
+/* 
+for(var i = 1; i<20;i=i+2){
+    
+    if(i==9){
+        continue;
+        
+    }
+    document.write(i+" ");
+} */
+
+/* var k = 5;
+for(var i=0;i<5;i++){
+    for(var j=0;j<5;j++){
+        if(j<k){
+            document.write("&nbsp;")
+        }
+        else{
+            document.write("*")
+        }
+        
+    }
+    k--;
+    document.write("<br>")
+} *//* 
+var k =5;
+for(var i=0;i<5;i++){
+    for(var j=0;j<=5;j++){
+        if(j<k){
+            document.write("&nbsp;&nbsp;");
+        }
+        else{
+            document.write("*");
+        }
+        
+    }
+    k--
+    document.write("<br>")
+} */
+
+/* str= "welcome";
+var l = str.length;
+var newstr = "";
+for(var i=l-1; i>=0;i--){
+    newstr = newstr+str[i]
+}
+document.write(newstr); */
+
+/* var num = prompt("enter the number");
+var l = num.length;
+var flag = true;
+for(var i=0; i<l;i++){
+    if(num[i]!==num[l-1-i]){
+        flag = false;
+    }
+}
+if(flag==false){
+    document.write(`${num} is not a palindrome`);
+}
+else{
+    document.write(`${num} is a palindrome`);
+}
+ */
+
+var str = prompt("hello brother");
+var l = str.length;
+var newstr = " ";
+for(var i=l-1;i>=0;i--){
+    newstr+=str[i];
+}
+document.write(newstr)
+</script>
+</body>
+</html>

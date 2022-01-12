@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exception Handling</title>
+</head>
+<body>
+    <input type="text" id="num1"><br><br>
+    <input type="text" id="num2"><br><br>
+    <input type="text" id="num3"><br><br>
+    
+    <input type="button" value="click" onclick="f1()">
+    <script>
+      
+      
+      function f1(){
+          try{
+            var num1 = parseInt(document.getElementById("num1").value);
+            var num2 = parseInt(document.getElementById("num2").value); 
+            var num3 = num1/num2;
+            document.getElementById("num3").value = num3;
+            if(num2==0){
+                throw "number can not be divide by zero";
+            }
+            else if(num1<0||num2<0){
+                throw "number should be greater than zero";
+            }
+           
+
+          }
+          catch(obj){
+            document.write(obj+"<br>");
+            document.write(obj.name+"<br>");
+            document.write(obj.message+"<br>");
+        }
+        finally{
+            document.write("All done.");
+        }
+      }
+      
+      /* function f1(){
+        try{
+            document.write(num1);
+            num1=100;
+        }
+        catch(obj){
+            document.write(obj+"<br>");
+            document.write(obj.name+"<br>");
+            document.write(obj.message+"<br>");
+        }
+      } */
+    </script>
+</body>
+</html>

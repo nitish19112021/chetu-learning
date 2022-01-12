@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>ui</title>
+        <style>
+            *{color: blue;}
+        </style>
+    </head>
+
+    <body><!-- 
+        <div style="width: 50%; height: 50%; border: 3px solid black; margin: auto; background-color: rgb(202, 206, 214);">
+        <fieldset style="width: 250px; float: right;">
+            <legend>Authentication</legend>
+        <table>
+            <tr>
+                <td>Name: </td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+        <td>Password</td>
+            <td>
+            <input type="password" id="pass">
+        </td>
+    </tr>
+        <td colspan="2" align="center"><input type="button" value="click" onclick="f1()"></td>        
+    </table>
+    <p id="demo"></p>
+    </fieldset>
+    </div>
+        <script>
+            function f1(){
+            var a = document.getElementById("name").value;
+            var b = document.getElementById("pass").value
+            if(a == "nitish" && b == "12345"){
+                document.getElementById("demo").innerHTML = `welcome ${a}`;
+            }
+            else{
+                document.getElementById("demo").innerHTML  = `${a} is not authorised person`;
+            }
+            }
+        </script> -->
+        <div>
+        <fieldset style="width: 330px; margin: auto; background-color:whitesmoke;">
+            <legend>Student Form</legend>
+            <table>
+                <tr><td>Name : </td><td><input type="text" id="name" style="width: 220px;"></td></tr>
+                <tr><td>Age : </td><td><input type="text" id="age" style="width: 220px;"></td></tr>
+                <tr><td>Gender : </td><td><input type="radio" id="male" name="gender" value="Male"> Male <input type="radio" id="female" name="gender" value="Female">Female</td></tr>
+                <tr><td>Hobbies : </td><td><input type="checkbox" id="check1" value="singing" >Singing<input type="checkbox" id="check2"  value="reading">Reading<input type="checkbox" id="check3" value="cricket">Cricket</td></tr>
+                <tr><td>Email : </td><td><input type="text" id="email" style="width: 220px;"></td></tr>
+                <tr><td>Address : </td><td><textarea rows="6" style="width: 220px;"></textarea></td></tr>
+                <tr><td>Qualification</td><td><select><option>BCA</option><option>MCA</option><option>B.Tech</option></select></td></tr>
+                <tr><td>State : </td><td><select><option>UP</option><option>Bihar</option><option>Punjab</option></select></td></tr>
+                <tr><td colspan="2" align="left"><input type="file" id="file"> </td></tr>
+                <tr><td colspan="2" align="center"><input type="button" onclick="f1()" value="submit"></td></tr>
+            </table>
+        </fieldset>
+    </div>
+    <script>
+        function f1(){
+        
+        var a = document.getElementById("male");
+        var b = document.getElementById("female");
+        if(a.checked == true){
+            alert("male");
+        }
+        if(b.checked == true){
+            alert("female");
+        }
+        
+        var store = " ";
+        var check1 = document.getElementById("check1");
+        var check2 = document.getElementById("check2");
+        var check3 = document.getElementById("check3");
+
+        if(check1.checked == true){
+            store += "Singing";
+        }
+        if(check2.checked == true){
+            store += "Reading";
+        }
+        if(check3.checked == true){
+            store += "Cricket";
+        }
+        alert(store);
+        store = " ";
+    }
+    </script>
+    </body>
+</html>

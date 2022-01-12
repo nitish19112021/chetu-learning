@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+        .button {
+            height: 44px;
+            width: 44px;
+            font-size: 1.4em;
+            margin: 10px;
+            background: #eee;
+            color: #333;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: cornflowerblue;
+            border-radius: 8pt;
+        }
+        .operations{
+            background: #393e46;
+            color: #fff;
+        }
+        .clear{
+            background: #fd7272;
+            color: #fff;
+            width: 205pt; 
+            height: 20pt; 
+            font-size: 1.1em;
+        }
+        .equal{
+            background: #182C61;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <fieldset style="width: 205pt; margin: auto; background: #4b7bec">
+        <table>
+            <tr>
+                <td colspan="4"><input type="text" id="disp" style="width: 205pt; padding :5pt; font-size: 1.6em; text-align: right;"></td>
+            </tr>
+            <tr>
+                <td><input class="button num" type="button" value="1" onclick="fun(1)"></td>
+                <td><input class="button num" type="button" value="2" onclick="fun(2)"></td>
+                <td><input class="button num" type="button" value="3" onclick="fun(3)"></td>
+                <td><input class="button operations" type="button" value="+" onclick="fun('+')"></td>
+            </tr>
+            <tr>
+                <td><input class="button num" type="button" value="4" onclick="fun(4)"></td>
+                <td><input class="button num" type="button" value="5" onclick="fun(5)"></td>
+                <td><input class="button num" type="button" value="6" onclick="fun(6)"></td>
+                <td><input class="button operations" type="button" value="-" onclick="fun('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="button num" type="button" value="7" onclick="fun(1)"></td>
+                <td><input class="button num" type="button" value="8" onclick="fun(2)"></td>
+                <td><input class="button num" type="button" value="9" onclick="fun(3)"></td>
+                <td><input class="button operations" type="button" value="*" onclick="fun('*')"></td>
+            </tr>
+            <tr>
+                <td><input class="button  operations" type="button" value="/" onclick="fun('/')"></td>
+                <td><input class="button " type="button" value="0" onclick="fun(0)"></td>
+                <td><input class="button equal" type="button" value="=" onclick="cal()"></td>
+                <td><input class="button operations" type="button" value="BS" onclick="backspace()"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><input class="clear" type="button" value="Clear" onclick="clr()"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <script>
+        function fun(a){
+            document.getElementById("disp").value += a;
+            
+        }
+        function cal(){
+            document.getElementById("disp").value = eval(document.getElementById("disp").value)
+        }
+        function clr(){
+            document.getElementById("disp").value = ""
+        }
+        function backspace(){
+            var b = document.getElementById("disp");
+            b.value =  b.value.slice(0,b.value.length - 1);
+        }
+    </script>
+</body>
+</html>

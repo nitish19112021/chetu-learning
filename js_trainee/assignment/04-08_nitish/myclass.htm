@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+
+<body>
+    <input type="button" onclick="f1()" value="click">
+    <p id="demo"></p>
+    <script>
+        class employee {
+            constructor(eno,ename,esal){
+                this.eno = eno;
+                this.ename = ename;
+                this.esal = esal;
+            }
+            info = function(){
+                return this.eno + " "+ this.ename+ " "+ this.esal;
+            }
+        }
+        function f1(){
+            var emp = new employee(101, "nit", 45454);
+          //  console.log(emp.info())
+          document.getElementById("demo").innerHTML = "<h1>" + emp.info() + "</h1>";
+
+        }
+        
+       /*  class rectangel{
+            height = 10;
+            width = 20;
+            calc = function (){
+                return this.height * this.width;
+            }
+        }
+        function f1(){
+            const rect = new rectangel()
+            document.getElementById("demo").innerHTML = "<h1>" +rect.calc() + "</h1>"; 
+        } */
+        /* class employee{
+            eno = 101;
+            ename = "Amit";
+            eval = 120000;
+        }
+        function f1(){
+            let emp = new employee();
+             document.getElementById("demo").innerHTML = "<h1>" + emp.eno + " "+ emp.ename + " " +emp.eval;
+        } */
+        /* class employee{
+            constructor(eno,ename,eval){
+                this.eno = eno;
+                this.ename = ename;
+                this.eval = eval;
+            }
+        }
+        
+        var emp = new employee(101, "nit", 55555);
+        console.log(emp.eno); */
+    </script>
+</body>
+</html>

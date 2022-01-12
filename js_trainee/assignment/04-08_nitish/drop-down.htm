@@ -1,0 +1,48 @@
+<html>
+<head>
+    <style>
+        form{
+            text-align: center;
+        }
+    .opt{
+          font-size: 25px;
+          align-items: center;
+      }
+    </style>
+</head>
+<body>
+<form style="border: 10px solid black; padding:10px; margin-left:40%; width: 200px; background-color: gray;">
+<input type="text" id="num1" placeholder="enter number 1"><br><br>
+<input type="text" id="num2" placeholder="enter number 2"><br><br>
+<select id="sel" onclick="myfun()" class="opt">
+    <option value="+" class="opt">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+</select><br><br>
+<input type="text" id="result">
+   
+</form>
+<script>
+    function myfun(){
+    var num1 = parseInt(document.getElementById("num1").value);
+    var num2 = parseInt(document.getElementById("num2").value);
+    var select = document.getElementById("sel");
+    var res = document.getElementById("result");
+        if(select.value == "+"){
+            res.value = num1 + num2
+        }else if(select.value == "-"){
+            res.value = num1 - num2;
+        }
+        else if(select.value == "*"){
+            res.value = num1 * num2;
+        }else if(select.value == "/"){
+            res.value = num1/num2;
+        }else{
+            res.value = num1 % num2;
+        }
+    }
+</script>
+</body>
+</html>

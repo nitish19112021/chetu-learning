@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prime</title>
+</head>
+<body>
+    
+    <input type="button" value="check" onclick="f1()">
+    <p id="demo"></p>
+    <p class="demo1"></p>
+        <script>
+            var num = parseInt(prompt("enter the number"));
+            var count = true;
+            for(var i = 2; i<num; i++){
+                if(num%i==0){
+                    count = false;
+                    break;
+                }
+            }
+            if(count == false){
+                //document.getElementById("demo").innerHTML = `${num} is not a prime number`;
+                var x = document.getElementsByClassName("demo1");
+                x.innerHTML = num+ "is not a prime number";
+                
+            }
+            else{
+                document.getElementsByClassName("demo").innerHTML = `${num} is a prime number`;
+            }
+        </script>    
+    
+    <!-- <script>
+            var num = parseInt(prompt("Enter the number"));
+            var count = 0;
+            if(num===1){
+                document.write(`${num} is not a prime or Composite number`);
+            }
+            else if(num > 1){
+                for(var i=2; i<num; i++){
+                    if(num%i==0){
+                        count = count+1;
+                        break;
+                    }
+                }
+                if(count == 1){
+                    document.write(`${num} is not a prime number` );
+                }
+                else{
+                    document.write(`${num} is a prime number`);
+                }
+            }
+        </script> -->
+
+
+     <!-- <script>             
+         ////////////// prime number by for loop ///////////////////////////it only create by loop    
+        
+            var num = parseInt(prompt("enter the number"));
+            var count = 0;
+            if(num===1){
+                document.write(num+" number is not prime and Composite number.");
+            }
+            else if(num > 1){          
+                for(var i=2;i<num;i++){
+                    if(num%i==0){
+                        count = count+1;
+                        break;    
+                    }               
+                }                
+            }
+            if(count==1){
+                    document.getElementById("demo").innerHTML = `${num} is not a prime number`;
+                }
+            else{
+                    document.getElementById("demo").innerHTML=`${num} is a prime number`;
+                }
+            
+    </script> -->
+        <!-- <script>
+        var num = parseInt(prompt("enter the number"));
+        var count = true;
+        for(var i = 2; i<num/2;i++){
+            if(num%i==0){
+                count=false;
+            }
+         
+        }
+        if(count==false){
+            document.write(`${num} is not prime number`);
+        }
+        else{
+            document.write(`${num} is prime number`);
+        }
+        
+    </script>  -->
+    
+    
+        <!-- <script>
+        var num = parseInt(prompt("enter number the number"));                    
+        if(num%2==0){
+            document.write(num+" is not prime number");
+        }
+        else{
+            document.write(num+" is a prime number");
+        }
+    </script>   -->
+
+
+
+    <!-- <input type="text" placeholder="enter number" id="num"><br><br>
+    <input type="button" value="click" onclick="f1()">
+ -->
+    <!-- <script>
+    // program to check if a number is prime or not
+
+            // take input from the user
+            const number = parseInt(prompt("Enter a positive number: "));
+            let isPrime = true;
+
+            // check if number is equal to 1
+            if (number === 1) {
+                console.log("1 is neither prime nor composite number.");
+            }
+
+            // check if number is greater than 1
+            else if (number > 1) {
+
+                // looping through 2 to number-1
+                for (let i = 2; i < number; i++) {
+                    if (number % i == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime) {
+                    console.log(`${number} is a prime number`);
+                } else {
+                    console.log(`${number} is a not prime number`);
+                }
+            }
+
+            // check if number is less than 1
+            else {
+                console.log("The number is not a prime number.");
+            }
+    </script> -->
+</body>
+</html>

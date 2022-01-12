@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle</title>
+</head>
+
+<body>
+
+    <button id="btn" onclick="myfun()" ondblclick="hide()">signup</button>
+    <p id="demo1"></p>
+    <script>
+        // alert("vksdnjkfnsd");
+
+        function hide(){
+            var res = document.getElementById("demo1").value;
+            document.getElementById("demo1").innerHTML = ' ';
+            // this.res;
+        }
+        function myfun() {
+            var demo = "<input type='text' placeholder='enter value 1'><br><br><input type='text'><br><br><input type='button' value='login'>";
+            var res = document.getElementById("demo1").value;
+            var msg = false;
+            if (msg == false) {
+                document.getElementById("demo1").innerHTML = demo;
+               
+            }
+            else {
+                alert('Not Found');
+                document.getElementById("demo1").innerHTML = " ";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
